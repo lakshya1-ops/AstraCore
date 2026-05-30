@@ -1,0 +1,24 @@
+read_verilog ./Hazard_detector/Forwarding_unit/forwarding_unit.v
+read_verilog ./Hazard_detector/stall_flush/hazard_detection.v
+read_verilog ./pipelining/if_id.v
+read_verilog ./pipelining/mem_wb.v
+read_verilog ./pipelining/ex_mem.v
+read_verilog ./pipelining/id_ex.v
+read_verilog ./dmem_stage/dmem.v
+read_verilog ./ID_stage/alu_sel_control.v
+read_verilog ./ID_stage/regfile_id.v
+read_verilog ./ID_stage/main_control.v
+read_verilog ./ID_stage/decoder.v
+read_verilog ./ID_stage/imm_gen.v
+read_verilog ./IF_stage/pr_logics_blocks/pc_next.v
+read_verilog ./IF_stage/pr_logics_blocks/pc.v
+read_verilog ./IF_stage/pr_logics_blocks/next_pc_mux.v
+read_verilog ./IF_stage/imem_block/imem.v
+read_verilog ./cpu_top.v
+read_verilog ./ex_stage/branch/comparator.v
+read_verilog ./ex_stage/branch/branch_target_adder.v
+read_verilog ./ex_stage/alu/alu.v
+read_verilog ./ex_stage/alu/alu_opB_src_mux.v
+read_verilog ./wb_stage/writeback_mux.v
+
+synth -top cpu_top
