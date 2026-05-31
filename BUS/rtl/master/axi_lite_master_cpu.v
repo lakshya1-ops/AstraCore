@@ -1,4 +1,4 @@
-`include "../axi_defs.vh"
+`include "axi_defs.vh"
 module axi_lite_master_cpu(
     input clk,
     input reset,

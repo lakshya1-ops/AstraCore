@@ -1,4 +1,4 @@
-`include "../axi_defs.vh"
+`include "axi_defs.vh"
 
 module axi_dmem_slave(
     input clk,
