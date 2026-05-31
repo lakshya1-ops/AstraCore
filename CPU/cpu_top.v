@@ -121,6 +121,9 @@ reg [31:0] forwarded_rs2_data;
 
 wire stall;
 wire flush;
+wire axi_busy;
+assign axi_busy = 1'b0;
+wire global_stall;
 
 //performence counter:-
 reg [31:0] cycle_counter;
@@ -137,7 +140,7 @@ wire wb_valid;
 pc PC(
     .clk(clk),
     .reset(reset),
-    .pc_enable(~stall),
+    .pc_enable(~global_stall),
     .pc_next(next_pc),
     .pc_current(pc_current)
 );
@@ -341,7 +344,7 @@ if_id IF_ID(
     .id_pc_current(id_pc_current),
     .id_pc_plus4(id_pc_plus4),
     .id_instruction(id_instruction),
-    .enable(~stall),
+    .enable(~global_stall),
     .flush(flush)
 );
 
@@ -515,6 +518,9 @@ assign debug_instr      = instruction;
 assign debug_alu_result = alu_result;
 assign debug_wb         = writeback_data;
 assign debug_mem        = mem_data;
+
+assign global_stall = stall || axi_busy;
+
 endmodule
 
 
