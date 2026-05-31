@@ -1,4 +1,4 @@
-module cpu_top(
+module cpu_axi_top(
     input clk,
     input reset,
 
