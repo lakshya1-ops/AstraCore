@@ -10,7 +10,7 @@ module imem(
     //out memory but has 256 set of instruction ie 256 unique adrres, so to select them we only need 8 byte data in pc/addr
     initial 
         begin
-            $readmemh("program.mem",memory);
+          $readmemh("CPU/program.mem", memory);
         end
 
     assign instruction =memory[address[9:2]];// 9:2contain 8 byte data that can store 256 diff addr to select from memory
