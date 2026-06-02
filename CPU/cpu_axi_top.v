@@ -149,6 +149,13 @@ reg [31:0] stall_counter;
 reg [31:0] flush_counter;
 wire wb_valid;
 
+//axi decoder:-
+
+wire dmem_sel;
+wire uart_sel;
+wire timer_sel;
+wire gpio_sel;
+
 
 
 //pc register//
@@ -572,11 +579,11 @@ axi_dmem_slave slave(
     .reset(reset),
 
     .AWADDR(AWADDR),
-    .AWVALID(AWVALID),
+    .AWVALID(AWVALID & dmem_sel),
     .AWREADY(AWREADY),
 
     .WDATA(WDATA),
-    .WVALID(WVALID),
+    .WVALID(WVALID & dmem_sel),
     .WREADY(WREADY),
 
     .BRESP(BRESP),
@@ -584,7 +591,7 @@ axi_dmem_slave slave(
     .BREADY(BREADY),
 
     .ARADDR(ARADDR),
-    .ARVALID(ARVALID),
+    .ARVALID(ARVALID & dmem_sel),
     .ARREADY(ARREADY),
 
     .RDATA(RDATA),
@@ -592,6 +599,16 @@ axi_dmem_slave slave(
     .RVALID(RVALID),
     .RREADY(RREADY)
 );
+
+//initiating axi decoder:-
+axi_decoder decoder(
+    .addr(mem_alu_result),
+    .dmem_sel(dmem_sel),
+    .uart_sel(uart_sel),
+    .timer_sel(timer_sel),
+    .gpio_sel(gpio_sel)
+);
+
 endmodule
 
 
