@@ -69,8 +69,9 @@ begin
                 begin
                     case(AWADDR[3:0])
                     4'h0:begin
-                           tx_data_reg <= WDATA;
-                           tx_start    <= 1'b1;
+                            tx_data_reg <= WDATA;
+                            tx_start    <= 1'b1;
+                            $write("%c", WDATA[7:0]);
                         end
                     4'h4:
                         status_reg <= WDATA;
