@@ -157,6 +157,32 @@ wire timer_sel;
 wire gpio_sel;
 
 
+//uart
+wire uart_awready;
+wire uart_wready;
+
+wire [1:0] uart_bresp;
+wire uart_bvalid;
+
+wire uart_arready;
+
+wire [31:0] uart_rdata;
+wire [1:0] uart_rresp;
+wire uart_rvalid;
+
+//dmem response wire
+wire dmem_awready;
+wire dmem_wready;
+
+wire [1:0] dmem_bresp;
+wire dmem_bvalid;
+
+wire dmem_arready;
+
+wire [31:0] dmem_rdata;
+wire [1:0] dmem_rresp;
+wire dmem_rvalid;
+
 
 //pc register//
 
@@ -580,33 +606,71 @@ axi_dmem_slave slave(
 
     .AWADDR(AWADDR),
     .AWVALID(AWVALID & dmem_sel),
-    .AWREADY(AWREADY),
+    .AWREADY(dmem_awready),
 
     .WDATA(WDATA),
     .WVALID(WVALID & dmem_sel),
-    .WREADY(WREADY),
+    .WREADY(dmem_wready),
 
-    .BRESP(BRESP),
-    .BVALID(BVALID),
+    .BRESP(dmem_bresp),
+    .BVALID(dmem_bvalid),
     .BREADY(BREADY),
 
     .ARADDR(ARADDR),
     .ARVALID(ARVALID & dmem_sel),
-    .ARREADY(ARREADY),
+    .ARREADY(dmem_arready),
 
-    .RDATA(RDATA),
-    .RRESP(RRESP),
-    .RVALID(RVALID),
+    .RDATA(dmem_rdata),
+    .RRESP(dmem_rresp),
+    .RVALID(dmem_rvalid),
     .RREADY(RREADY)
 );
 
+assign AWREADY = dmem_sel ? dmem_awready : uart_sel ? uart_awready :1'b0;
+
+assign WREADY =dmem_sel ? dmem_wready : uart_sel ? uart_wready :1'b0;
+
+assign BVALID = dmem_sel ? dmem_bvalid : uart_sel ? uart_bvalid :1'b0;
+
+assign BRESP =dmem_sel ? dmem_bresp :uart_sel ? uart_bresp :2'b00;
+
+assign ARREADY =dmem_sel ? dmem_arready :uart_sel ? uart_arready :1'b0;
+
+assign RVALID =dmem_sel ? dmem_rvalid :uart_sel ? uart_rvalid :1'b0;
+
+assign RRESP =dmem_sel ? dmem_rresp :uart_sel ? uart_rresp :2'b00;
+
+assign RDATA = dmem_sel ? dmem_rdata :uart_sel ? uart_rdata :32'd0;
+
 //initiating axi decoder:-
 axi_decoder decoder(
-    .addr(mem_alu_result),
+    .addr(AWVALID ? AWADDR : ARADDR),
     .dmem_sel(dmem_sel),
     .uart_sel(uart_sel),
     .timer_sel(timer_sel),
     .gpio_sel(gpio_sel)
+);
+
+//initiating uart
+axi_uart_slave uart(
+    .clk(clk),
+    .reset(reset),
+    .AWADDR(AWADDR),
+    .AWVALID(AWVALID & uart_sel),
+    .AWREADY(uart_awready),
+    .WDATA(WDATA),
+    .WVALID(WVALID & uart_sel),
+    .WREADY(uart_wready),
+    .BRESP(uart_bresp),
+    .BVALID(uart_bvalid),
+    .BREADY(BREADY),
+    .ARADDR(ARADDR),
+    .ARVALID(ARVALID & uart_sel),
+    .ARREADY(uart_arready),
+    .RDATA(uart_rdata),
+    .RRESP(uart_rresp),
+    .RVALID(uart_rvalid),
+    .RREADY(RREADY)
 );
 
 endmodule

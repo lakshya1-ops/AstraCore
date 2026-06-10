@@ -38,7 +38,7 @@ always @(*)//ie immediate changes instantly when instruction changes
                 //2)AUIPC:-this adds the large imm value stores in pc and make new pc=pc+immvalue
         //so here both rs1 and rs2 along with func7 and func3 are replaced by immediate value 
         // 20 upper bit are taken from instruction and rest lower bits are kept 0
-        7'b0110111,7'b0010111: imm_out={instruction[31:12],1'b0};
+        7'b0110111,7'b0010111: imm_out={instruction[31:12],12'b0};
 
 
         //Jtype

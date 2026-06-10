@@ -102,6 +102,25 @@ always @(*)
                         default:alu_sel=4'b1111;
                     endcase
                 end
+        // LUI
+        7'b0110111:
+                alu_sel = 4'b0000;
+
+        // AUIPC
+        7'b0010111:
+                alu_sel = 4'b0000;
+
+        // LOAD
+        7'b0000011:
+                alu_sel = 4'b0000;
+
+        // STORE
+        7'b0100011:
+                alu_sel = 4'b0000;
+
+         // JALR
+        7'b1100111:
+                alu_sel = 4'b0000;
 
         default: alu_sel=4'b1111;
 

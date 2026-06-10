@@ -50,17 +50,33 @@ localparam WRITE_WAIT      = 3'd4;//waits for BVALID
 
 reg [2:0] state;
 reg [2:0] next_state;
+reg [`AXI_ADDR_WIDTH-1:0] req_addr;
+reg [`AXI_DATA_WIDTH-1:0] req_wdata;
 
 always @(posedge clk or posedge reset)
 begin
     if(reset)
     begin
+        req_addr  <= 0;
+        req_wdata <= 0;
         state <= IDLE;
         mem_rdata <= {`AXI_DATA_WIDTH{1'b0}};
     end
     else
     begin
         state <= next_state;
+
+        if(state == IDLE && mem_mem_write)
+        begin
+            req_addr  <= mem_addr;
+            req_wdata <= mem_wdata;
+        end
+
+        if(state == IDLE && mem_mem_read)
+        begin
+            req_addr <= mem_addr;
+        end
+
         if(state == READ_WAIT && RVALID)
             mem_rdata <= RDATA;
     end
@@ -112,9 +128,9 @@ begin
     WVALID  = 1'b0;
     RREADY  = 1'b0;
     BREADY  = 1'b0;
-    ARADDR  = mem_addr;
-    AWADDR  = mem_addr;
-    WDATA   = mem_wdata;
+    ARADDR  = req_addr;
+    AWADDR  = req_addr;
+    WDATA   = req_wdata;
     case(state)
         IDLE:
         begin
