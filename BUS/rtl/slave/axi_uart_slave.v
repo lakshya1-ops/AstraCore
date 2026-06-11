@@ -60,7 +60,6 @@ begin
         BRESP  <= `RESP_OKAY;
         tx_start <= 1'b0;
         tx_data_reg <= 32'd0;
-        status_reg  <= 32'd0;
     end
     else
     begin
@@ -73,8 +72,6 @@ begin
                             tx_start    <= 1'b1;
                             $write("%c", WDATA[7:0]);
                         end
-                    4'h4:
-                        status_reg <= WDATA;
                     default:    ;
                     endcase 
 
@@ -122,6 +119,14 @@ begin
             RVALID <= 1'b0;
         end
     end
+end
+
+always @(posedge clk or posedge reset)
+begin
+    if(reset)
+        status_reg <= 32'd0;
+    else
+        status_reg <= {31'd0, busy};
 end
 
 endmodule

@@ -1,7 +1,7 @@
 module id_ex(
     input clk,
     input reset,
-
+    input enable,
     //INPUT FROM ID STAGE
     input[31:0]id_pc_current,
     input[31:0]id_pc_plus4,
@@ -89,7 +89,7 @@ begin
     ex_rs1 <= 5'b0;
     ex_rs2 <= 5'b0;
 end
-    else 
+    else if(enable)
     begin
 
         ex_pc_current <= id_pc_current;

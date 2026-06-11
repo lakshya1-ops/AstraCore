@@ -2,6 +2,7 @@ module mem_wb(
 
     input clk,
     input reset,
+    input enable,
     // INPUTS FROM MEM STAGE
     input [31:0] mem_alu_result,
     input [31:0] mem_data,
@@ -31,7 +32,7 @@ begin
         wb_reg_write <= 1'b0;
         wb_wb_sel <= 2'b0;
     end
-    else
+    else if(enable)
     begin
         wb_alu_result <= mem_alu_result;
         wb_mem_data <= mem_data;

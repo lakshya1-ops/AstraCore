@@ -1,6 +1,7 @@
 module ex_mem(
     input clk,
     input reset,
+    input enable,
     // INPUTS FROM EX STAGE
     input[31:0] alu_result,
     input[31:0] ex_rs2_data,
@@ -62,7 +63,7 @@ begin
         mem_jalr <= 1'b0;
 
     end
-else
+else if(enable)
     begin
         mem_alu_result <= alu_result;
         mem_rs2_data <= ex_rs2_data;

@@ -184,6 +184,27 @@ wire [1:0] dmem_rresp;
 wire dmem_rvalid;
 
 
+//solving timing issues
+wire mem_read_done;
+wire mem_write_done;
+
+wire mem_wait;
+assign mem_wait = (mem_mem_read || mem_mem_write) && axi_busy;
+wire mem_wb_enable;
+assign mem_wb_enable =
+    mem_mem_read  ? mem_read_done  :
+    mem_mem_write ? mem_write_done :
+                    ~axi_busy;
+
+wire mem_request;
+wire mem_done;
+assign mem_request = mem_mem_read || mem_mem_write;
+assign mem_done = mem_read_done || mem_write_done;
+assign global_stall = stall || axi_busy || (mem_request && !mem_done);
+
+wire pipe_enable;
+assign pipe_enable = ~global_stall;
+
 //pc register//
 
 
@@ -386,7 +407,7 @@ if_id IF_ID(
     .id_pc_current(id_pc_current),
     .id_pc_plus4(id_pc_plus4),
     .id_instruction(id_instruction),
-    .enable(~global_stall),
+    .enable(pipe_enable),
     .flush(flush)
 );
 
@@ -394,6 +415,7 @@ if_id IF_ID(
 id_ex ID_EX(
     .clk(clk),
     .reset(reset),
+ .enable(pipe_enable),
     // ID stage inputs
     .id_pc_current(id_pc_current),
     .id_pc_plus4(id_pc_plus4),
@@ -440,6 +462,7 @@ id_ex ID_EX(
 ex_mem EX_MEM(
     .clk(clk),
     .reset(reset),
+     .enable(pipe_enable),
     // EX stage inputs
     .alu_result(alu_result),
     .ex_rs2_data(forwarded_rs2_data),
@@ -479,6 +502,7 @@ ex_mem EX_MEM(
 mem_wb MEM_WB(
     .clk(clk),
     .reset(reset),
+    .enable(mem_wb_enable),
     // MEM input
     .mem_alu_result(mem_alu_result),
     .mem_data(mem_data),
@@ -561,7 +585,6 @@ assign debug_alu_result = alu_result;
 assign debug_wb         = writeback_data;
 assign debug_mem        = mem_data;
 
-assign global_stall = stall || axi_busy;
 
 //initiating axi modules
 wire [31:0] axi_mem_rdata;
@@ -570,7 +593,8 @@ assign mem_data = axi_mem_rdata;
 axi_lite_master_cpu master(
     .clk(clk),
     .reset(reset),
-
+    .mem_read_done(mem_read_done),
+    .mem_write_done(mem_write_done),
     .mem_mem_read(mem_mem_read),
     .mem_mem_write(mem_mem_write),
     .mem_addr(mem_alu_result),
