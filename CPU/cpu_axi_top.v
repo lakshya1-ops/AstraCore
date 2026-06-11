@@ -205,6 +205,17 @@ assign global_stall = stall || axi_busy || (mem_request && !mem_done);
 wire pipe_enable;
 assign pipe_enable = ~global_stall;
 
+//timer
+wire timer_awready;
+wire timer_wready;
+wire [1:0] timer_bresp;
+wire timer_bvalid;
+wire timer_arready;
+wire [31:0] timer_rdata;
+wire [1:0] timer_rresp;
+wire timer_rvalid;
+wire timer_irq;
+
 //pc register//
 
 
@@ -650,22 +661,37 @@ axi_dmem_slave slave(
     .RREADY(RREADY)
 );
 
-assign AWREADY = dmem_sel ? dmem_awready : uart_sel ? uart_awready :1'b0;
+assign AWREADY = dmem_sel ? dmem_awready :
+                 uart_sel ? uart_awready :
+                 timer_sel ? timer_awready : 1'b0;
 
-assign WREADY =dmem_sel ? dmem_wready : uart_sel ? uart_wready :1'b0;
+assign WREADY = dmem_sel ? dmem_wready :
+                uart_sel ? uart_wready :
+                timer_sel ? timer_wready : 1'b0;
 
-assign BVALID = dmem_sel ? dmem_bvalid : uart_sel ? uart_bvalid :1'b0;
+assign BVALID = dmem_sel ? dmem_bvalid :
+                uart_sel ? uart_bvalid :
+                timer_sel ? timer_bvalid : 1'b0;
 
-assign BRESP =dmem_sel ? dmem_bresp :uart_sel ? uart_bresp :2'b00;
+assign BRESP = dmem_sel ? dmem_bresp :
+               uart_sel ? uart_bresp :
+               timer_sel ? timer_bresp : 2'b00;
 
-assign ARREADY =dmem_sel ? dmem_arready :uart_sel ? uart_arready :1'b0;
+assign ARREADY = dmem_sel ? dmem_arready :
+                 uart_sel ? uart_arready :
+                 timer_sel ? timer_arready : 1'b0;
 
-assign RVALID =dmem_sel ? dmem_rvalid :uart_sel ? uart_rvalid :1'b0;
+assign RVALID = dmem_sel ? dmem_rvalid :
+                uart_sel ? uart_rvalid :
+                timer_sel ? timer_rvalid : 1'b0;
 
-assign RRESP =dmem_sel ? dmem_rresp :uart_sel ? uart_rresp :2'b00;
+assign RRESP = dmem_sel ? dmem_rresp :
+               uart_sel ? uart_rresp :
+               timer_sel ? timer_rresp : 2'b00;
 
-assign RDATA = dmem_sel ? dmem_rdata :uart_sel ? uart_rdata :32'd0;
-
+assign RDATA = dmem_sel ? dmem_rdata :
+               uart_sel ? uart_rdata :
+               timer_sel ? timer_rdata : 32'd0;
 //initiating axi decoder:-
 axi_decoder decoder(
     .addr(AWVALID ? AWADDR : ARADDR),
@@ -695,6 +721,33 @@ axi_uart_slave uart(
     .RRESP(uart_rresp),
     .RVALID(uart_rvalid),
     .RREADY(RREADY)
+);
+axi_timer_slave timer(
+    .clk(clk),
+    .reset(reset),
+
+    .AWADDR(AWADDR),
+    .AWVALID(AWVALID & timer_sel),
+    .AWREADY(timer_awready),
+
+    .WDATA(WDATA),
+    .WVALID(WVALID & timer_sel),
+    .WREADY(timer_wready),
+
+    .BRESP(timer_bresp),
+    .BVALID(timer_bvalid),
+    .BREADY(BREADY),
+
+    .ARADDR(ARADDR),
+    .ARVALID(ARVALID & timer_sel),
+    .ARREADY(timer_arready),
+
+    .RDATA(timer_rdata),
+    .RRESP(timer_rresp),
+    .RVALID(timer_rvalid),
+    .RREADY(RREADY),
+
+    .timer_irq(timer_irq)
 );
 
 endmodule
