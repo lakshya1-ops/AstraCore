@@ -44,10 +44,10 @@ assign ARREADY = 1'b1;
 // 0x0C STATUS  bit0=match, write 1 to clear
 
 reg timer_enable;
-reg irq_enable;
-reg [31:0] count_reg;
-reg [31:0] compare_reg;
-reg status_match;
+reg irq_enable;//interrut generator
+reg [31:0] count_reg;//increase every clock
+reg [31:0] compare_reg;//expected idead value of counter
+reg status_match; //=1 if comapre=count
 
 assign timer_irq = irq_enable && status_match;
 

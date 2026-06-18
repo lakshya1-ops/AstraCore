@@ -155,6 +155,7 @@ wire dmem_sel;
 wire uart_sel;
 wire timer_sel;
 wire gpio_sel;
+wire accel_sel;
 
 
 //uart
@@ -698,7 +699,8 @@ axi_decoder decoder(
     .dmem_sel(dmem_sel),
     .uart_sel(uart_sel),
     .timer_sel(timer_sel),
-    .gpio_sel(gpio_sel)
+    .gpio_sel(gpio_sel),
+    .accel_sel(accel_sel)     
 );
 
 //initiating uart

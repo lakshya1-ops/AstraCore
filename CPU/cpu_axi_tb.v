@@ -39,7 +39,7 @@ begin
 end
 
 initial begin
-    #1000;
+    #2000;
 
     if(dut.REGFILE.registers[5] == 32'h00000001)
     begin

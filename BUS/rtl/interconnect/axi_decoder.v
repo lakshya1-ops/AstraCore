@@ -4,7 +4,8 @@ module axi_decoder(
     output dmem_sel,
     output uart_sel,
     output timer_sel,
-    output gpio_sel
+    output gpio_sel,
+    output accel_sel
 );
 
 // DMEM : 0x00000000 - 0x00000FFF
@@ -18,5 +19,8 @@ assign timer_sel = (addr >= 32'h10000100)&&(addr <= 32'h100001FF);
 
 // GPIO : 0x10000200 - 0x100002FF
 assign gpio_sel = (addr >= 32'h10000200)&&(addr <= 32'h100002FF);
+
+// ACCELERATOR : 0x10000300 - 0x100003FF
+assign accel_sel = (addr >= 32'h10000300) && (addr <= 32'h100003FF);
 
 endmodule
