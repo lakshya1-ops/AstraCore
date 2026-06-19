@@ -1,4 +1,22 @@
+//=============================================================================
 // wallace_multiplier.v
+// AstraCore Matrix Accelerator — Signed Wallace Tree Multiplier
+// Author : Lakshya Chowdhury
+// Project: AstraCore RISC-V SoC
+//
+// Signed multiplication via sign-magnitude separation:
+//   Step 1 : Extract sign bits
+//   Step 2 : Convert to unsigned magnitudes
+//   Step 3 : Unsigned Wallace tree multiplication
+//   Step 4 : Correct output sign
+//
+// For WIDTH=8:
+//   Inputs  : two signed   8-bit integers (-128 to +127)
+//   Output  : signed      16-bit result
+//   Internal: unsigned     8-bit magnitudes into Wallace tree
+//   Partial products: 8 rows of TREE_WIDTH=21 bits
+//   CLA operates on CLA_WIDTH=24 (padded to multiple of 4)
+//=============================================================================
 
 `include "accelerator_pkg.vh"
 
@@ -9,23 +27,30 @@ module wallace_multiplier #(
     input  signed [WIDTH-1:0]   b,
     output signed [2*WIDTH-1:0] product
 );
-// LOCAL PARAMETERS
-localparam PP_WIDTH   = 2 * WIDTH;          // 16 for WIDTH=8
-localparam TREE_WIDTH = PP_WIDTH + 5;        // 21 — prevents MSB loss
 
-   // STAGE 1 — SIGN EXTRACTION AND MAGNITUDE CONVERSION
+    //-------------------------------------------------------------------------
+    // LOCAL PARAMETERS
+    //-------------------------------------------------------------------------
+    localparam PP_WIDTH   = 2 * WIDTH;                      // 16 for WIDTH=8
+    localparam TREE_WIDTH = PP_WIDTH + 5;                   // 21 — internal CSA width
+    localparam CLA_WIDTH  = ((TREE_WIDTH + 3) / 4) * 4;    // 24 — padded to multiple of 4
+
+    //-------------------------------------------------------------------------
+    // STAGE 1 — SIGN EXTRACTION AND MAGNITUDE CONVERSION
+    //-------------------------------------------------------------------------
     wire                  a_sign, b_sign, prod_sign;
     wire [WIDTH-1:0]      a_mag,  b_mag;
 
-    assign a_sign    = a[WIDTH-1];              // MSB = sign bit
+    assign a_sign    = a[WIDTH-1];
     assign b_sign    = b[WIDTH-1];
-    assign prod_sign = a_sign ^ b_sign;         // XOR gives output sign
+    assign prod_sign = a_sign ^ b_sign;
 
-    // Convert to unsigned magnitude
     assign a_mag = a_sign ? (~a + 1'b1) : a;
     assign b_mag = b_sign ? (~b + 1'b1) : b;
 
+    //-------------------------------------------------------------------------
     // STAGE 2 — UNSIGNED PARTIAL PRODUCT GENERATION
+    //-------------------------------------------------------------------------
     wire [TREE_WIDTH-1:0] pp [0:WIDTH-1];
 
     genvar i;
@@ -37,8 +62,11 @@ localparam TREE_WIDTH = PP_WIDTH + 5;        // 21 — prevents MSB loss
         end
     endgenerate
 
+    //-------------------------------------------------------------------------
     // STAGE 3 — WALLACE TREE CSA REDUCTION
-   
+    // 8 partial products → 2 values via 4 CSA levels
+    //-------------------------------------------------------------------------
+
     // Level 1
     wire [TREE_WIDTH-1:0] s10, c10, s11, c11;
 
@@ -76,7 +104,6 @@ localparam TREE_WIDTH = PP_WIDTH + 5;        // 21 — prevents MSB loss
         .a(s20), .b(c20 << 1), .c(s21),
         .sum(s30),  .carry(c30)
     );
-    // c21 passes through to level 4
 
     //--- Level 4 ---
     carry_save_adder #(.WIDTH(TREE_WIDTH)) csa_l4_0(
@@ -84,25 +111,43 @@ localparam TREE_WIDTH = PP_WIDTH + 5;        // 21 — prevents MSB loss
         .sum(s40),  .carry(c40)
     );
 
+    //-------------------------------------------------------------------------
     // STAGE 4 — FINAL CLA ADDITION
-     wire [TREE_WIDTH-1:0] cla_sum;
-    wire                  cla_cout;
+    // Pad TREE_WIDTH=21 to CLA_WIDTH=24 before feeding CLA
+    // Take lower PP_WIDTH=16 bits as unsigned product
+    //-------------------------------------------------------------------------
+    wire [CLA_WIDTH-1:0] cla_a, cla_b, cla_result;
+    wire                 cla_cout;
 
-    cla_adder #(.WIDTH(TREE_WIDTH)) final_adder(
-        .a   (s40),
-        .b   (c40 << 1),
+    // Zero pad from TREE_WIDTH to CLA_WIDTH
+    assign cla_a = {{(CLA_WIDTH-TREE_WIDTH){1'b0}}, s40};
+    assign cla_b = {{(CLA_WIDTH-TREE_WIDTH){1'b0}}, c40 << 1};
+
+    cla_adder #(.WIDTH(CLA_WIDTH)) final_adder(
+        .a   (cla_a),
+        .b   (cla_b),
         .cin (1'b0),
-        .sum (cla_sum),
+        .sum (cla_result),
         .cout(cla_cout)
     );
 
-    // unsigned magnitude result — truncate to PP_WIDTH
+    // Take lower 16 bits — upper bits guaranteed zero for valid INT8 inputs
     wire [PP_WIDTH-1:0] unsigned_product;
-    assign unsigned_product = cla_sum[PP_WIDTH-1:0];
+    assign unsigned_product = cla_result[PP_WIDTH-1:0];
 
+    //-------------------------------------------------------------------------
     // STAGE 5 — SIGN CORRECTION
-   assign product = prod_sign ?
-                 -$signed(unsigned_product) :
-                  $signed(unsigned_product);
+    //-------------------------------------------------------------------------
+    assign product = prod_sign ?
+                     -$signed(unsigned_product) :
+                      $signed(unsigned_product);
+
+    // Simulation check
+    // synthesis translate_off
+    always @(*) begin
+        if(cla_cout)
+            $display("WARNING: wallace_multiplier overflow");
+    end
+    // synthesis translate_off
 
 endmodule
