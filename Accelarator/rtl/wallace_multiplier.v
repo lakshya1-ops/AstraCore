@@ -1,23 +1,4 @@
-//=============================================================================
 // wallace_multiplier.v
-// AstraCore Matrix Accelerator — Signed Wallace Tree Multiplier
-// Author : Lakshya Chowdhury
-// Project: AstraCore RISC-V SoC
-//
-// Signed multiplication via sign-magnitude separation:
-//   Step 1 : Extract sign bits
-//   Step 2 : Convert to unsigned magnitudes
-//   Step 3 : Unsigned Wallace tree multiplication
-//   Step 4 : Correct output sign
-//
-// For WIDTH=8:
-//   Inputs  : two signed   8-bit integers (-128 to +127)
-//   Output  : signed      16-bit result
-//   Internal: unsigned     8-bit magnitudes into Wallace tree
-//   Partial products: 8 rows of TREE_WIDTH=21 bits
-//   CLA operates on CLA_WIDTH=24 (padded to multiple of 4)
-//=============================================================================
-
 `include "accelerator_pkg.vh"
 
 module wallace_multiplier #(
@@ -28,17 +9,13 @@ module wallace_multiplier #(
     output signed [2*WIDTH-1:0] product
 );
 
-    //-------------------------------------------------------------------------
     // LOCAL PARAMETERS
-    //-------------------------------------------------------------------------
     localparam PP_WIDTH   = 2 * WIDTH;                      // 16 for WIDTH=8
     localparam TREE_WIDTH = PP_WIDTH + 5;                   // 21 — internal CSA width
     localparam CLA_WIDTH  = ((TREE_WIDTH + 3) / 4) * 4;    // 24 — padded to multiple of 4
 
-    //-------------------------------------------------------------------------
     // STAGE 1 — SIGN EXTRACTION AND MAGNITUDE CONVERSION
-    //-------------------------------------------------------------------------
-    wire                  a_sign, b_sign, prod_sign;
+     wire                  a_sign, b_sign, prod_sign;
     wire [WIDTH-1:0]      a_mag,  b_mag;
 
     assign a_sign    = a[WIDTH-1];
@@ -48,9 +25,7 @@ module wallace_multiplier #(
     assign a_mag = a_sign ? (~a + 1'b1) : a;
     assign b_mag = b_sign ? (~b + 1'b1) : b;
 
-    //-------------------------------------------------------------------------
     // STAGE 2 — UNSIGNED PARTIAL PRODUCT GENERATION
-    //-------------------------------------------------------------------------
     wire [TREE_WIDTH-1:0] pp [0:WIDTH-1];
 
     genvar i;
@@ -62,11 +37,9 @@ module wallace_multiplier #(
         end
     endgenerate
 
-    //-------------------------------------------------------------------------
     // STAGE 3 — WALLACE TREE CSA REDUCTION
     // 8 partial products → 2 values via 4 CSA levels
-    //-------------------------------------------------------------------------
-
+    
     // Level 1
     wire [TREE_WIDTH-1:0] s10, c10, s11, c11;
 
@@ -111,11 +84,7 @@ module wallace_multiplier #(
         .sum(s40),  .carry(c40)
     );
 
-    //-------------------------------------------------------------------------
-    // STAGE 4 — FINAL CLA ADDITION
-    // Pad TREE_WIDTH=21 to CLA_WIDTH=24 before feeding CLA
-    // Take lower PP_WIDTH=16 bits as unsigned product
-    //-------------------------------------------------------------------------
+   // STAGE 4 — FINAL CLA ADDITION
     wire [CLA_WIDTH-1:0] cla_a, cla_b, cla_result;
     wire                 cla_cout;
 
@@ -124,8 +93,8 @@ module wallace_multiplier #(
     assign cla_b = {{(CLA_WIDTH-TREE_WIDTH){1'b0}}, c40 << 1};
 
     cla_adder #(.WIDTH(CLA_WIDTH)) final_adder(
-        .a   (cla_a),
-        .b   (cla_b),
+        .a(cla_a),
+        .b(cla_b),
         .cin (1'b0),
         .sum (cla_result),
         .cout(cla_cout)
@@ -135,9 +104,7 @@ module wallace_multiplier #(
     wire [PP_WIDTH-1:0] unsigned_product;
     assign unsigned_product = cla_result[PP_WIDTH-1:0];
 
-    //-------------------------------------------------------------------------
-    // STAGE 5 — SIGN CORRECTION
-    //-------------------------------------------------------------------------
+   // STAGE 5 — SIGN CORRECTION
     assign product = prod_sign ?
                      -$signed(unsigned_product) :
                       $signed(unsigned_product);

@@ -1,30 +1,7 @@
-//=============================================================================
 // cla_adder.v
-// AstraCore Matrix Accelerator — Block Carry Lookahead Adder
-// Author : Lakshya Chowdhury
-// Project: AstraCore RISC-V SoC
-//
-// Architecture: Block/Hierarchical CLA
-//   - True carry lookahead WITHIN each 4-bit group (O(1) per group)
-//   - Ripple carry BETWEEN groups (O(N/4) total)
-//   - Much faster than pure ripple carry (O(N))
-//   - Correctly called: Block CLA or Hierarchical CLA
-//
-// WIDTH must be multiple of 4
-// For non-multiple widths, pad externally before calling
-//
-// Used in:
-//   1. wallace_multiplier.v → WIDTH=24 (padded from 21), lower 16 bits taken
-//   2. mac_unit.v           → WIDTH=32
-//=============================================================================
-
 `include "accelerator_pkg.vh"
 
-//=============================================================================
 // 4-BIT CLA GROUP
-// True carry lookahead within 4 bits
-// All 4 carries computed in parallel from g, p, cin only
-//=============================================================================
 module cla_group(
     input  [3:0] a,
     input  [3:0] b,
@@ -77,11 +54,7 @@ module cla_group(
 
 endmodule
 
-//=============================================================================
 // BLOCK CLA ADDER
-// WIDTH must be multiple of 4
-// Pad inputs externally if needed
-//=============================================================================
 module cla_adder #(
     parameter WIDTH = `ACC_WIDTH
 )(
@@ -106,8 +79,8 @@ module cla_adder #(
                 .cin (carry[i]),
                 .sum (sum[4*i+3 : 4*i]),
                 .cout(carry[i+1]),
-                .G   (),
-                .P   ()
+                .G(),
+                .P()
             );
         end
     endgenerate
