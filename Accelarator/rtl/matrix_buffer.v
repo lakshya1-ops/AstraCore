@@ -1,15 +1,4 @@
-//=============================================================================
 // matrix_buffer.v
-// AstraCore Matrix Accelerator — Matrix Buffer (A, B, C)
-// Author : Lakshya Chowdhury
-// Project: AstraCore RISC-V SoC
-//
-// buf_a, buf_b : written by CPU, read by accelerator (combinational)
-// buf_c        : written by accelerator, read by CPU (combinational)
-//
-// All reads combinational — no latency (FIX Bug 2)
-//=============================================================================
-
 `include "accelerator_pkg.vh"
 
 module matrix_buffer #(
@@ -50,9 +39,7 @@ module matrix_buffer #(
 
     integer wi, wj, idx;
 
-    //-------------------------------------------------------------------------
-    // CPU WRITE — buf_a and buf_b
-    //-------------------------------------------------------------------------
+   // CPU WRITE — buf_a and buf_b
     always @(posedge clk) begin
         if(rst) begin
             for(idx = 0; idx < DEPTH; idx = idx+1) begin
@@ -68,9 +55,7 @@ module matrix_buffer #(
         end
     end
 
-    //-------------------------------------------------------------------------
     // ACCELERATOR WRITE — buf_c
-    //-------------------------------------------------------------------------
     always @(posedge clk) begin
         if(rst) begin
             for(idx = 0; idx < DEPTH; idx = idx+1)
@@ -83,11 +68,8 @@ module matrix_buffer #(
         end
     end
 
-    //-------------------------------------------------------------------------
     // COMBINATIONAL READS — FIX Bug 2
-    // All reads are wire assigns — zero latency
-    //-------------------------------------------------------------------------
-
+    
     // CPU reads C buffer — combinational
     assign cpu_rd_data = buf_c[cpu_rd_addr];
 

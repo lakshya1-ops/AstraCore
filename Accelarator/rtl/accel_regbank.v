@@ -1,14 +1,8 @@
-//=============================================================================
 // accel_regbank.v
-// AstraCore Matrix Accelerator — Register Bank
-// Author : Lakshya Chowdhury
-// Project: AstraCore RISC-V SoC
-//
 // Register Map:
 //   0x00 — CONTROL : START bit (write only, reads 0)
 //   0x04 — STATUS  : BUSY bit[0], DONE bit[1]
 //   0x08 — DIM     : read-only, always returns MATRIX_DIM
-//=============================================================================
 
 `include "accelerator_pkg.vh"
 
@@ -29,10 +23,7 @@ module accel_regbank(
     input           fsm_busy,
     input           fsm_done
 );
-
-    //-------------------------------------------------------------------------
-    // STATUS REGISTER
-    //-------------------------------------------------------------------------
+// STATUS REGISTER
     reg [31:0] status_reg;
 
     always @(posedge clk) begin
@@ -44,10 +35,8 @@ module accel_regbank(
         end
     end
 
-    //-------------------------------------------------------------------------
-    // START PULSE
-    //-------------------------------------------------------------------------
-    always @(posedge clk) begin
+   // START PULSE
+   always @(posedge clk) begin
         if(rst)
             start_pulse <= 1'b0;
         else
@@ -56,16 +45,11 @@ module accel_regbank(
                            reg_wr_data[`CTRL_START_BIT];
     end
 
-    //-------------------------------------------------------------------------
     // DIM — read only constant (FIX 2)
     // Hardware is always 4x4 — no runtime reconfiguration
-    // Eliminates risk of CPU writing DIM > MATRIX_DIM
-    //-------------------------------------------------------------------------
     assign dim_reg = `MATRIX_DIM;
 
-    //-------------------------------------------------------------------------
     // REGISTER READ — combinational
-    //-------------------------------------------------------------------------
     always @(*) begin
         case(reg_rd_addr)
             `REG_CONTROL : reg_rd_data = 32'h0;

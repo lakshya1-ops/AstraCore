@@ -1,19 +1,4 @@
-//=============================================================================
 // matrix_accelerator_top.v
-// AstraCore Matrix Accelerator — Top Level
-// Author : Lakshya Chowdhury
-// Project: AstraCore RISC-V SoC
-//
-// Connects all accelerator blocks:
-//   axi_accel_slave   — AXI-lite interface to CPU bus
-//   accel_regbank     — control/status registers
-//   accelerator_fsm   — sequencing state machine
-//   address_generator — generates buffer read addresses
-//   matrix_buffer     — stores A, B, C matrices
-//   mac_array         — NxN parallel compute engine
-//
-// This module is instantiated in cpu_axi_top.v as a new AXI slave.
-//=============================================================================
 
 `include "axi_defs.vh"
 `include "accelerator_pkg.vh"
@@ -25,10 +10,7 @@ module matrix_accelerator_top #(
 )(
     input           clk,
     input           rst,
-
-    //-------------------------------------------------------------------------
-    // AXI-LITE SLAVE PORTS — connects to cpu_axi_top.v bus
-    //-------------------------------------------------------------------------
+// AXI-LITE SLAVE PORTS — connects to cpu_axi_top.v bus
     input  [31:0]   AWADDR,
     input           AWVALID,
     output          AWREADY,
@@ -51,10 +33,8 @@ module matrix_accelerator_top #(
     output [1:0]    RRESP
 );
 
-    //-------------------------------------------------------------------------
     // INTERNAL WIRES — between blocks
-    //-------------------------------------------------------------------------
-
+    
     // axi_accel_slave → accel_regbank
     wire            reg_wr_en;
     wire [7:0]      reg_wr_addr;
@@ -102,10 +82,8 @@ module matrix_accelerator_top #(
     // mac_array → matrix_buffer
     wire signed [ACC_WIDTH-1:0] c_out [0:MATRIX_DIM-1][0:MATRIX_DIM-1];
 
-    //-------------------------------------------------------------------------
     // AXI ACCEL SLAVE
-    //-------------------------------------------------------------------------
-    axi_accel_slave #(
+   axi_accel_slave #(
         .MATRIX_DIM(MATRIX_DIM),
         .DATA_WIDTH(DATA_WIDTH),
         .ACC_WIDTH (ACC_WIDTH)
@@ -140,11 +118,8 @@ module matrix_accelerator_top #(
         .cpu_rd_addr(cpu_rd_addr),
         .cpu_rd_data(cpu_rd_data)
     );
-
-    //-------------------------------------------------------------------------
-    // REGISTER BANK
-    //-------------------------------------------------------------------------
-    accel_regbank u_regbank (
+ // REGISTER BANK
+   accel_regbank u_regbank (
         .clk        (clk),
         .rst        (rst),
         .reg_wr_en  (reg_wr_en),
@@ -158,9 +133,7 @@ module matrix_accelerator_top #(
         .fsm_done   (fsm_done)
     );
 
-    //-------------------------------------------------------------------------
     // FSM
-    //-------------------------------------------------------------------------
     accelerator_fsm #(
         .MATRIX_DIM(MATRIX_DIM)
     ) u_fsm (
@@ -176,9 +149,7 @@ module matrix_accelerator_top #(
         .accel_wr_en(accel_wr_en)
     );
 
-    //-------------------------------------------------------------------------
     // ADDRESS GENERATOR
-    //-------------------------------------------------------------------------
     address_generator #(
         .MATRIX_DIM(MATRIX_DIM),
         .DATA_WIDTH(DATA_WIDTH)
@@ -189,10 +160,8 @@ module matrix_accelerator_top #(
         .c_addr(c_addr)
     );
 
-    //-------------------------------------------------------------------------
     // MATRIX BUFFER
-    //-------------------------------------------------------------------------
-    matrix_buffer #(
+   matrix_buffer #(
         .MATRIX_DIM(MATRIX_DIM),
         .DATA_WIDTH(DATA_WIDTH),
         .ACC_WIDTH (ACC_WIDTH)
@@ -214,9 +183,7 @@ module matrix_accelerator_top #(
         .accel_c_data (c_out)
     );
 
-    //-------------------------------------------------------------------------
     // MAC ARRAY
-    //-------------------------------------------------------------------------
     mac_array #(
         .MATRIX_DIM(MATRIX_DIM),
         .DATA_WIDTH(DATA_WIDTH),
