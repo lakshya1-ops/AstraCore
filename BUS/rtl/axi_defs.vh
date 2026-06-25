@@ -13,4 +13,6 @@
 `define RESP_SLVERR 2'b10
 `define RESP_DECERR 2'b11
 
+`define AXI_RESP_OKAY   `RESP_OKAY
+`define AXI_RESP_SLVERR `RESP_SLVERR
 `endif

@@ -217,6 +217,16 @@ wire [1:0] timer_rresp;
 wire timer_rvalid;
 wire timer_irq;
 
+//accelerator response wires
+wire accel_awready;
+wire accel_wready;
+wire [1:0] accel_bresp;
+wire accel_bvalid;
+wire accel_arready;
+wire [31:0] accel_rdata;
+wire [1:0] accel_rresp;
+wire accel_rvalid;
+
 //pc register//
 
 
@@ -662,37 +672,45 @@ axi_dmem_slave slave(
     .RREADY(RREADY)
 );
 
-assign AWREADY = dmem_sel ? dmem_awready :
-                 uart_sel ? uart_awready :
-                 timer_sel ? timer_awready : 1'b0;
+assign AWREADY = dmem_sel  ? dmem_awready  :
+                 uart_sel  ? uart_awready  :
+                 timer_sel ? timer_awready :
+                 accel_sel ? accel_awready : 1'b0;
 
-assign WREADY = dmem_sel ? dmem_wready :
-                uart_sel ? uart_wready :
-                timer_sel ? timer_wready : 1'b0;
+assign WREADY  = dmem_sel  ? dmem_wready   :
+                 uart_sel  ? uart_wready   :
+                 timer_sel ? timer_wready  :
+                 accel_sel ? accel_wready  : 1'b0;
 
-assign BVALID = dmem_sel ? dmem_bvalid :
-                uart_sel ? uart_bvalid :
-                timer_sel ? timer_bvalid : 1'b0;
+assign BVALID  = dmem_sel  ? dmem_bvalid   :
+                 uart_sel  ? uart_bvalid   :
+                 timer_sel ? timer_bvalid  :
+                 accel_sel ? accel_bvalid  : 1'b0;
 
-assign BRESP = dmem_sel ? dmem_bresp :
-               uart_sel ? uart_bresp :
-               timer_sel ? timer_bresp : 2'b00;
+assign BRESP   = dmem_sel  ? dmem_bresp    :
+                 uart_sel  ? uart_bresp    :
+                 timer_sel ? timer_bresp   :
+                 accel_sel ? accel_bresp   : 2'b00;
 
-assign ARREADY = dmem_sel ? dmem_arready :
-                 uart_sel ? uart_arready :
-                 timer_sel ? timer_arready : 1'b0;
+assign ARREADY = dmem_sel  ? dmem_arready  :
+                 uart_sel  ? uart_arready  :
+                 timer_sel ? timer_arready :
+                 accel_sel ? accel_arready : 1'b0;
 
-assign RVALID = dmem_sel ? dmem_rvalid :
-                uart_sel ? uart_rvalid :
-                timer_sel ? timer_rvalid : 1'b0;
+assign RVALID  = dmem_sel  ? dmem_rvalid   :
+                 uart_sel  ? uart_rvalid   :
+                 timer_sel ? timer_rvalid  :
+                 accel_sel ? accel_rvalid  : 1'b0;
 
-assign RRESP = dmem_sel ? dmem_rresp :
-               uart_sel ? uart_rresp :
-               timer_sel ? timer_rresp : 2'b00;
+assign RRESP   = dmem_sel  ? dmem_rresp    :
+                 uart_sel  ? uart_rresp    :
+                 timer_sel ? timer_rresp   :
+                 accel_sel ? accel_rresp   : 2'b00;
 
-assign RDATA = dmem_sel ? dmem_rdata :
-               uart_sel ? uart_rdata :
-               timer_sel ? timer_rdata : 32'd0;
+assign RDATA   = dmem_sel  ? dmem_rdata    :
+                 uart_sel  ? uart_rdata    :
+                 timer_sel ? timer_rdata   :
+                 accel_sel ? accel_rdata   : 32'd0;
 //initiating axi decoder:-
 axi_decoder decoder(
     .addr(AWVALID ? AWADDR : ARADDR),
@@ -750,6 +768,28 @@ axi_timer_slave timer(
     .RREADY(RREADY),
 
     .timer_irq(timer_irq)
+);
+
+//initiating accelerator
+matrix_accelerator_top accel(
+    .clk(clk),
+    .rst(reset),
+    .AWADDR(AWADDR),
+    .AWVALID(AWVALID & accel_sel),
+    .AWREADY(accel_awready),
+    .WDATA(WDATA),
+    .WVALID(WVALID & accel_sel),
+    .WREADY(accel_wready),
+    .BRESP(accel_bresp),
+    .BVALID(accel_bvalid),
+    .BREADY(BREADY),
+    .ARADDR(ARADDR),
+    .ARVALID(ARVALID & accel_sel),
+    .ARREADY(accel_arready),
+    .RDATA(accel_rdata),
+    .RVALID(accel_rvalid),
+    .RREADY(RREADY),
+    .RRESP(accel_rresp)
 );
 
 endmodule

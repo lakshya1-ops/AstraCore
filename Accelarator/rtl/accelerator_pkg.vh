@@ -36,9 +36,9 @@
 // TIMING
 `define PIPELINE_DEPTH    2
 
-// BUFFER SIZING
+// BUFFER SIZING — FIX: 4 bits for 4x4 matrix (16 elements, addr 0-15)
 `define BUF_DEPTH         (`MATRIX_DIM * `MATRIX_DIM)
-`define BUF_ADDR_WIDTH    8
+`define BUF_ADDR_WIDTH    4     // FIX: was 8, now 4 — correct for 4x4
 
 // AXI RESPONSE CODES
 `define RESP_OKAY         2'b00
