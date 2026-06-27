@@ -31,17 +31,36 @@ module mac_array #(
 
     // Matrix A inputs — one element per row per cycle
     // a_in[i] = A[i][k] for current k
-    input  signed [DATA_WIDTH-1:0]  a_in [0:MATRIX_DIM-1],
-
+    // Flat packed inputs — unpacked internally
     // Matrix B inputs — one element per column per cycle
     // b_in[j] = B[k][j] for current k
-    input  signed [DATA_WIDTH-1:0] b_in [0:MATRIX_DIM-1],
+    input  [MATRIX_DIM*DATA_WIDTH-1:0] a_in_flat,
+    input  [MATRIX_DIM*DATA_WIDTH-1:0] b_in_flat,
+    
 
     // Result matrix C — all elements available after computation
-    // c_out[i][j] = C[i][j] = dot(A_row_i, B_col_j)
-    output signed [ACC_WIDTH-1:0] c_out [0:MATRIX_DIM-1][0:MATRIX_DIM-1]
-);
+    // Flat packed output
+    output [MATRIX_DIM*MATRIX_DIM*ACC_WIDTH-1:0] c_out_flat
+    );
+     // UNPACK flat inputs into internal arrays
+    wire signed [DATA_WIDTH-1:0] a_in [0:MATRIX_DIM-1];
+    wire signed [DATA_WIDTH-1:0] b_in [0:MATRIX_DIM-1];
 
+    genvar idx;
+    generate
+        for(idx = 0; idx < MATRIX_DIM; idx = idx+1) begin : unpack_a
+            assign a_in[idx] = a_in_flat[idx*DATA_WIDTH +: DATA_WIDTH];
+        end
+        for(idx = 0; idx < MATRIX_DIM; idx = idx+1) begin : unpack_b
+            assign b_in[idx] = b_in_flat[idx*DATA_WIDTH +: DATA_WIDTH];
+        end
+    endgenerate
+
+   // Internal result array
+   wire signed [ACC_WIDTH-1:0] c_out [0:MATRIX_DIM-1][0:MATRIX_DIM-1];
+
+   // NxN PE ARRAY
+   
     genvar i, j;
     generate
         for(i = 0; i < MATRIX_DIM; i = i+1) begin : row
@@ -59,5 +78,14 @@ module mac_array #(
             end
         end
     endgenerate
-
+    
+     // PACK internal result array into flat output
+     generate
+        for(i = 0; i < MATRIX_DIM; i = i+1) begin : pack_row
+            for(j = 0; j < MATRIX_DIM; j = j+1) begin : pack_col
+                assign c_out_flat[(i*MATRIX_DIM+j)*ACC_WIDTH +: ACC_WIDTH] =
+                       c_out[i][j];
+            end
+        end
+    endgenerate
 endmodule

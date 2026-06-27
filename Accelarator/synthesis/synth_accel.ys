@@ -1,0 +1,16 @@
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/carry_save_adder.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/cla_adder.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/wallace_multiplier.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/mac_unit.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/processing_element.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/mac_array.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/matrix_buffer.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/address_generator.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/accel_regbank.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/accelerator_fsm.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/axi_accel_slave.v
+read_verilog -sv -I../rtl -I../../BUS/rtl ../rtl/matrix_accelerator_top.v
+
+synth -top matrix_accelerator_top
+
+stat

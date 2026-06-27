@@ -21,26 +21,26 @@ module address_generator #(
 
     // Row addresses for matrix A
     // a_addr[i] = address of A[i][k] in buf_a
-    output [`BUF_ADDR_WIDTH-1:0] a_addr [0:MATRIX_DIM-1],
+   output [MATRIX_DIM*`BUF_ADDR_WIDTH-1:0] a_addr_flat,
 
     // Column addresses for matrix B
     // b_addr[j] = address of B[k][j] in buf_b
-    output [`BUF_ADDR_WIDTH-1:0] b_addr [0:MATRIX_DIM-1],
+    output [MATRIX_DIM*`BUF_ADDR_WIDTH-1:0] b_addr_flat,
 
     // Result addresses for matrix C
     // c_addr[i][j] = address of C[i][j] in buf_c
-    output [`BUF_ADDR_WIDTH-1:0] c_addr [0:MATRIX_DIM-1][0:MATRIX_DIM-1]
+      output [MATRIX_DIM*MATRIX_DIM*`BUF_ADDR_WIDTH-1:0] c_addr_flat
 );
 
-    //-------------------------------------------------------------------------
-    // A ADDRESSES — one per row
+   // A ADDRESSES — one per row
     // A[i][k] in row-major → address = i*MATRIX_DIM + k
     // k changes every cycle — FSM drives k_in
     // i is fixed per output port — generate loop handles all rows
     genvar i, j;
     generate
         for(i = 0; i < MATRIX_DIM; i = i+1) begin : a_addr_gen
-            assign a_addr[i] = i * MATRIX_DIM + k_in;
+            assign a_addr_flat[i*`BUF_ADDR_WIDTH +: `BUF_ADDR_WIDTH] =
+                   i * MATRIX_DIM + k_in;
         end
     endgenerate
 
@@ -50,7 +50,8 @@ module address_generator #(
     // j is fixed per output port — generate loop handles all cols
     generate
         for(j = 0; j < MATRIX_DIM; j = j+1) begin : b_addr_gen
-            assign b_addr[j] = k_in * MATRIX_DIM + j;
+             assign b_addr_flat[j*`BUF_ADDR_WIDTH +: `BUF_ADDR_WIDTH] =
+                   k_in * MATRIX_DIM + j;
         end
     endgenerate
 
@@ -61,7 +62,8 @@ module address_generator #(
     generate
         for(i = 0; i < MATRIX_DIM; i = i+1) begin : c_addr_row
             for(j = 0; j < MATRIX_DIM; j = j+1) begin : c_addr_col
-                assign c_addr[i][j] = i * MATRIX_DIM + j;
+                assign c_addr_flat[(i*MATRIX_DIM+j)*`BUF_ADDR_WIDTH +: `BUF_ADDR_WIDTH] =
+                       i * MATRIX_DIM + j;
             end
         end
     endgenerate

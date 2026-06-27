@@ -10,34 +10,67 @@ module matrix_buffer #(
     input rst,
 
     // CPU write port — A and B
-    input                               cpu_wr_en,
-    input                               cpu_sel_a,
-    input  [`BUF_ADDR_WIDTH-1:0]        cpu_wr_addr,
-    input  [DATA_WIDTH-1:0]             cpu_wr_data,
+    input cpu_wr_en,
+    input cpu_sel_a,
+    input  [`BUF_ADDR_WIDTH-1:0] cpu_wr_addr,
+    input  [DATA_WIDTH-1:0] cpu_wr_data,
 
     // CPU read port — C (combinational)
-    input  [`BUF_ADDR_WIDTH-1:0]        cpu_rd_addr,
-    output [ACC_WIDTH-1:0]              cpu_rd_data,    // wire — combinational
+    input  [`BUF_ADDR_WIDTH-1:0] cpu_rd_addr,
+    output [ACC_WIDTH-1:0] cpu_rd_data,    // wire — combinational
 
-    // Accelerator read port — A and B (combinational)
-    input  [`BUF_ADDR_WIDTH-1:0]        accel_a_addr [0:MATRIX_DIM-1],
-    input  [`BUF_ADDR_WIDTH-1:0]        accel_b_addr [0:MATRIX_DIM-1],
-    output signed [DATA_WIDTH-1:0]      accel_a_data [0:MATRIX_DIM-1],
-    output signed [DATA_WIDTH-1:0]      accel_b_data [0:MATRIX_DIM-1],
-
-    // Accelerator write port — C
-    input                               accel_wr_en,
-    input  [`BUF_ADDR_WIDTH-1:0]        accel_c_addr [0:MATRIX_DIM-1][0:MATRIX_DIM-1],
-    input  signed [ACC_WIDTH-1:0]       accel_c_data [0:MATRIX_DIM-1][0:MATRIX_DIM-1]
+    // Accelerator read port — A and B (flat packed)
+    input  [MATRIX_DIM*`BUF_ADDR_WIDTH-1:0] accel_a_addr_flat,
+    input  [MATRIX_DIM*`BUF_ADDR_WIDTH-1:0] accel_b_addr_flat,
+    output [MATRIX_DIM*DATA_WIDTH-1:0] accel_a_data_flat,
+    output [MATRIX_DIM*DATA_WIDTH-1:0] accel_b_data_flat,
+    // Accelerator write port — C (flat packed)
+    input accel_wr_en,
+    input  [MATRIX_DIM*MATRIX_DIM*`BUF_ADDR_WIDTH-1:0] accel_c_addr_flat,
+    input  [MATRIX_DIM*MATRIX_DIM*ACC_WIDTH-1:0] accel_c_data_flat
 );
 
     localparam DEPTH = MATRIX_DIM * MATRIX_DIM;
 
+    // BUFFER DECLARATIONS
     reg [DATA_WIDTH-1:0]    buf_a [0:DEPTH-1];
     reg [DATA_WIDTH-1:0]    buf_b [0:DEPTH-1];
     reg [ACC_WIDTH-1:0]     buf_c [0:DEPTH-1];
 
     integer wi, wj, idx;
+
+   // UNPACK flat accelerator read addresses
+    wire [`BUF_ADDR_WIDTH-1:0] accel_a_addr [0:MATRIX_DIM-1];
+    wire [`BUF_ADDR_WIDTH-1:0] accel_b_addr [0:MATRIX_DIM-1];
+
+    genvar i, j;
+    generate
+        for(i = 0; i < MATRIX_DIM; i = i+1) begin : unpack_a_addr
+            assign accel_a_addr[i] =
+                   accel_a_addr_flat[i*`BUF_ADDR_WIDTH +: `BUF_ADDR_WIDTH];
+        end
+        for(i = 0; i < MATRIX_DIM; i = i+1) begin : unpack_b_addr
+            assign accel_b_addr[i] =
+                   accel_b_addr_flat[i*`BUF_ADDR_WIDTH +: `BUF_ADDR_WIDTH];
+        end
+    endgenerate
+
+     // UNPACK flat accelerator write addresses and data
+     wire [`BUF_ADDR_WIDTH-1:0] accel_c_addr [0:MATRIX_DIM-1][0:MATRIX_DIM-1];
+    wire signed [ACC_WIDTH-1:0] accel_c_data [0:MATRIX_DIM-1][0:MATRIX_DIM-1];
+
+    generate
+        for(i = 0; i < MATRIX_DIM; i = i+1) begin : unpack_c_row
+            for(j = 0; j < MATRIX_DIM; j = j+1) begin : unpack_c_col
+                assign accel_c_addr[i][j] =
+                       accel_c_addr_flat[(i*MATRIX_DIM+j)*`BUF_ADDR_WIDTH
+                                         +: `BUF_ADDR_WIDTH];
+                assign accel_c_data[i][j] =
+                       accel_c_data_flat[(i*MATRIX_DIM+j)*ACC_WIDTH
+                                         +: ACC_WIDTH];
+            end
+        end
+    endgenerate
 
    // CPU WRITE — buf_a and buf_b
     always @(posedge clk) begin
@@ -68,19 +101,19 @@ module matrix_buffer #(
         end
     end
 
-    // COMBINATIONAL READS — FIX Bug 2
     
-    // CPU reads C buffer — combinational
+    // CPU reads C buffer
     assign cpu_rd_data = buf_c[cpu_rd_addr];
 
-    // Accelerator reads A and B — combinational
-    genvar i;
+    // Accelerator reads A and B — pack into flat output
     generate
-        for(i = 0; i < MATRIX_DIM; i = i+1) begin : a_read
-            assign accel_a_data[i] = $signed(buf_a[accel_a_addr[i]]);
+        for(i = 0; i < MATRIX_DIM; i = i+1) begin : pack_a_data
+            assign accel_a_data_flat[i*DATA_WIDTH +: DATA_WIDTH] =
+                   $signed(buf_a[accel_a_addr[i]]);
         end
-        for(i = 0; i < MATRIX_DIM; i = i+1) begin : b_read
-            assign accel_b_data[i] = $signed(buf_b[accel_b_addr[i]]);
+        for(i = 0; i < MATRIX_DIM; i = i+1) begin : pack_b_data
+            assign accel_b_data_flat[i*DATA_WIDTH +: DATA_WIDTH] =
+                   $signed(buf_b[accel_b_addr[i]]);
         end
     endgenerate
 

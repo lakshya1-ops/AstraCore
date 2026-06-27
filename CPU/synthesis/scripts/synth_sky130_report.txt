@@ -1,0 +1,91 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.65 (git sha1 aec814bdf3071f7e0fd0fbe43f7f711e99d01e24, clang++ 17.0.0 -fPIC -O3)
+
+-- Executing script file `synth_sky130.ys' --
+
+1. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/Hazard_detector/Forwarding_unit/forwarding_unit.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/Hazard_detector/Forwarding_unit/forwarding_unit.v' to AST representation.
+Generating RTLIL representation for module `\forwarding_unit'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/Hazard_detector/stall_flush/hazard_detection.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/Hazard_detector/stall_flush/hazard_detection.v' to AST representation.
+Generating RTLIL representation for module `\hazard_detection_unit'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/if_id.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/if_id.v' to AST representation.
+Generating RTLIL representation for module `\if_id'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/mem_wb.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/mem_wb.v' to AST representation.
+Generating RTLIL representation for module `\mem_wb'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/ex_mem.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/ex_mem.v' to AST representation.
+Generating RTLIL representation for module `\ex_mem'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/id_ex.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/id_ex.v' to AST representation.
+Generating RTLIL representation for module `\id_ex'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/dmem_stage/dmem.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/dmem_stage/dmem.v' to AST representation.
+Generating RTLIL representation for module `\dmem'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/alu_sel_control.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/alu_sel_control.v' to AST representation.
+Generating RTLIL representation for module `\alu_control'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/regfile_id.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/regfile_id.v' to AST representation.
+Generating RTLIL representation for module `\regfile'.
+Warning: Replacing memory \registers with list of registers. See /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/regfile_id.v:21
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/main_control.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/main_control.v' to AST representation.
+Generating RTLIL representation for module `\main_control'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/decoder.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/decoder.v' to AST representation.
+Generating RTLIL representation for module `\decoder'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/imm_gen.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/imm_gen.v' to AST representation.
+Generating RTLIL representation for module `\imm_gen'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/pc_next.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/pc_next.v' to AST representation.
+Generating RTLIL representation for module `\pc_next'.
+Successfully finished Verilog frontend.
+
+14. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/pc.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/pc.v' to AST representation.
+Generating RTLIL representation for module `\pc'.
+Successfully finished Verilog frontend.
+
+15. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/next_pc_mux.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/next_pc_mux.v' to AST representation.
+Generating RTLIL representation for module `\next_pc_mux'.
+Successfully finished Verilog frontend.
+
+16. Executing Verilog-2005 frontend: /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/imem_block/imem.v
+Parsing Verilog input from `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/imem_block/imem.v' to AST representation.
+Generating RTLIL representation for module `\imem'.
+Successfully finished Verilog frontend.
+ERROR: File `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/cpu_top.v' not found or is a directory

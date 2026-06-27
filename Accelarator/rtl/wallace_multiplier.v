@@ -115,6 +115,6 @@ module wallace_multiplier #(
         if(cla_cout)
             $display("WARNING: wallace_multiplier overflow");
     end
-    // synthesis translate_off
+    // synthesis translate_on
 
 endmodule

@@ -1,0 +1,34 @@
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/Hazard_detector/Forwarding_unit/forwarding_unit.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/Hazard_detector/stall_flush/hazard_detection.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/if_id.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/mem_wb.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/ex_mem.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/pipelining/id_ex.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/dmem_stage/dmem.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/alu_sel_control.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/regfile_id.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/main_control.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/decoder.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ID_stage/imm_gen.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/pc_next.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/pc.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/pr_logics_blocks/next_pc_mux.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/IF_stage/imem_block/imem.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/cpu_axi_top.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ex_stage/branch/comparator.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ex_stage/branch/branch_target_adder.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ex_stage/alu/alu.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/ex_stage/alu/alu_opB_src_mux.v
+read_verilog /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/wb_stage/writeback_mux.v
+
+synth -top cpu_axi_top
+
+dfflibmap -liberty /Users/lakshyachowdhury/pdks/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+abc -liberty /Users/lakshyachowdhury/pdks/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+opt_clean -purge
+
+stat -liberty /Users/lakshyachowdhury/pdks/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+write_verilog -noattr /Users/lakshyachowdhury/Documents/ASTRACORE/CPU/synthesis/netlists/cpu_sky130_netlist.v

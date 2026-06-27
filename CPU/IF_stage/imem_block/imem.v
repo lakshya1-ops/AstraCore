@@ -16,7 +16,7 @@ module imem(
             memory[i] = 32'h00000013;
 
         // Then overwrite starting locations with your real program.
-        $readmemh("CPU/program.mem", memory);
+        $readmemh("/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/program.mem", memory);
     end
 
     assign instruction = memory[address[9:2]];
