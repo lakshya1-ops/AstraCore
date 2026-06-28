@@ -1,0 +1,284 @@
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/if_id.v:36:10: Missing newline at end of file (POSIX 3.206).
+                                                                      : ... Suggest add newline.
+   36 | endmodule
+      |          ^
+                     ... For warning description see https://verilator.org/warn/EOFNEWLINE?v=5.018
+                     ... Use "/* verilator lint_off EOFNEWLINE */" and lint_on around source to disable this message.
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/axi_uart_slave.v:132:10: Missing newline at end of file (POSIX 3.206).
+                                                                                : ... Suggest add newline.
+  132 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/axi_defs.vh:18:7: Missing newline at end of file (POSIX 3.206).
+                                                                         : ... Suggest add newline.
+   18 | `endif
+      |       ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/hazard_detection.v:16:10: Missing newline at end of file (POSIX 3.206).
+                                                                                 : ... Suggest add newline.
+   16 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/dmem.v:39:10: Missing newline at end of file (POSIX 3.206).
+                                                                     : ... Suggest add newline.
+   39 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/mem_wb.v:45:10: Missing newline at end of file (POSIX 3.206).
+                                                                       : ... Suggest add newline.
+   45 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/processing_element.v:30:10: Missing newline at end of file (POSIX 3.206).
+                                                                                   : ... Suggest add newline.
+   30 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/accelerator_pkg.vh:47:7: Missing newline at end of file (POSIX 3.206).
+                                                                                : ... Suggest add newline.
+   47 | `endif
+      |       ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/accelerator_fsm.v:139:10: Missing newline at end of file (POSIX 3.206).
+                                                                                 : ... Suggest add newline.
+  139 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/imem.v:24:10: Missing newline at end of file (POSIX 3.206).
+                                                                     : ... Suggest add newline.
+   24 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/address_generator.v:71:10: Missing newline at end of file (POSIX 3.206).
+                                                                                  : ... Suggest add newline.
+   71 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/accel_regbank.v:62:10: Missing newline at end of file (POSIX 3.206).
+                                                                              : ... Suggest add newline.
+   62 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/carry_save_adder.v:57:10: Missing newline at end of file (POSIX 3.206).
+                                                                                 : ... Suggest add newline.
+   57 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/pc_next.v:7:10: Missing newline at end of file (POSIX 3.206).
+                                                                       : ... Suggest add newline.
+    7 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/alu_sel_control.v:129:10: Missing newline at end of file (POSIX 3.206).
+                                                                                 : ... Suggest add newline.
+  129 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/axi_decoder.v:26:10: Missing newline at end of file (POSIX 3.206).
+                                                                            : ... Suggest add newline.
+   26 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/uart_tx.v:74:10: Missing newline at end of file (POSIX 3.206).
+                                                                        : ... Suggest add newline.
+   74 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/id_ex.v:117:10: Missing newline at end of file (POSIX 3.206).
+                                                                       : ... Suggest add newline.
+  117 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/wallace_multiplier.v:120:10: Missing newline at end of file (POSIX 3.206).
+                                                                                    : ... Suggest add newline.
+  120 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/axi_accel_slave.v:161:10: Missing newline at end of file (POSIX 3.206).
+                                                                                 : ... Suggest add newline.
+  161 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/axi_dmem_slave.v:124:10: Missing newline at end of file (POSIX 3.206).
+                                                                                : ... Suggest add newline.
+  124 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/forwarding_unit.v:42:10: Missing newline at end of file (POSIX 3.206).
+                                                                                : ... Suggest add newline.
+   42 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/mac_array.v:91:10: Missing newline at end of file (POSIX 3.206).
+                                                                          : ... Suggest add newline.
+   91 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/axi_lite_master_cpu.v:208:10: Missing newline at end of file (POSIX 3.206).
+                                                                                     : ... Suggest add newline.
+  208 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/cla_adder.v:90:10: Missing newline at end of file (POSIX 3.206).
+                                                                          : ... Suggest add newline.
+   90 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/matrix_accelerator_top.v:186:10: Missing newline at end of file (POSIX 3.206).
+                                                                                        : ... Suggest add newline.
+  186 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/alu_opB_src_mux.v:9:10: Missing newline at end of file (POSIX 3.206).
+                                                                               : ... Suggest add newline.
+    9 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/main_control.v:97:10: Missing newline at end of file (POSIX 3.206).
+                                                                             : ... Suggest add newline.
+   97 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/decoder.v:27:10: Missing newline at end of file (POSIX 3.206).
+                                                                        : ... Suggest add newline.
+   27 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/matrix_buffer.v:120:10: Missing newline at end of file (POSIX 3.206).
+                                                                               : ... Suggest add newline.
+  120 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/next_pc_mux.v:30:10: Missing newline at end of file (POSIX 3.206).
+                                                                            : ... Suggest add newline.
+   30 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/mac_unit.v:52:10: Missing newline at end of file (POSIX 3.206).
+                                                                         : ... Suggest add newline.
+   52 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/imm_gen.v:53:10: Missing newline at end of file (POSIX 3.206).
+                                                                        : ... Suggest add newline.
+   53 | endmodule
+      |          ^
+%Warning-EOFNEWLINE: /openlane/designs/astracore_soc/src/branch_target_adder.v:10:10: Missing newline at end of file (POSIX 3.206).
+                                                                                    : ... Suggest add newline.
+   10 | endmodule
+      |          ^
+%Warning-PINMISSING: /openlane/designs/astracore_soc/src/cpu_axi_top.v:264:14: Cell has missing pin: 'mem_to_reg'
+  264 | main_control CONTROL(
+      |              ^~~~~~~
+%Warning-PINCONNECTEMPTY: /openlane/designs/astracore_soc/src/cla_adder.v:82:18: Cell pin connected by name with empty reference: 'G'
+   82 |                 .G(),
+      |                  ^
+%Warning-PINCONNECTEMPTY: /openlane/designs/astracore_soc/src/cla_adder.v:83:18: Cell pin connected by name with empty reference: 'P'
+   83 |                 .P()
+      |                  ^
+%Warning-PINCONNECTEMPTY: /openlane/designs/astracore_soc/src/mac_unit.v:39:10: Cell pin connected by name with empty reference: 'cout'
+   39 |         .cout()                  
+      |          ^~~~
+%Warning-WIDTHTRUNC: /openlane/designs/astracore_soc/src/axi_accel_slave.v:65:24: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's SHIFTR generates 8 bits.
+                                                                                : ... note: In instance 'cpu_axi_top.accel.u_axi_slave'
+   65 |     assign cpu_rd_addr = (ARADDR[7:0] - 8'h8C) >> 2;     
+      |                        ^
+%Warning-WIDTHTRUNC: /openlane/designs/astracore_soc/src/axi_accel_slave.v:105:33: Operator ASSIGNDLY expects 4 bits on the Assign RHS, but Assign RHS's SHIFTR generates 8 bits.
+                                                                                 : ... note: In instance 'cpu_axi_top.accel.u_axi_slave'
+  105 |                     cpu_wr_addr <= (wr_offset - 8'h0C) >> 2;
+      |                                 ^~
+%Warning-WIDTHTRUNC: /openlane/designs/astracore_soc/src/axi_accel_slave.v:114:33: Operator ASSIGNDLY expects 4 bits on the Assign RHS, but Assign RHS's SHIFTR generates 8 bits.
+                                                                                 : ... note: In instance 'cpu_axi_top.accel.u_axi_slave'
+  114 |                     cpu_wr_addr <= (wr_offset - 8'h4C) >> 2;
+      |                                 ^~
+%Warning-WIDTHEXPAND: /openlane/designs/astracore_soc/src/accelerator_fsm.v:65:34: Operator LT expects 32 or 8 bits on the LHS, but LHS's VARREF 'k_counter' generates 4 bits.
+                                                                                 : ... note: In instance 'cpu_axi_top.accel.u_fsm'
+   65 |                     if(k_counter < dim_reg - 1)
+      |                                  ^
+%Warning-WIDTHEXPAND: /openlane/designs/astracore_soc/src/accelerator_fsm.v:87:30: Operator EQ expects 32 or 8 bits on the LHS, but LHS's VARREF 'k_counter' generates 4 bits.
+                                                                                 : ... note: In instance 'cpu_axi_top.accel.u_fsm'
+   87 |                 if(k_counter == dim_reg - 1)
+      |                              ^~
+%Warning-WIDTHTRUNC: /openlane/designs/astracore_soc/src/imm_gen.v:32:27: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 33 bits.
+                                                                        : ... note: In instance 'cpu_axi_top.IMM_GEN'
+   32 |         7'b1100011:imm_out={{19{instruction[31]}},instruction[31],instruction[7],instruction[31:25],instruction[11:8],1'b0};
+      |                           ^
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:93:6: Signal is not used: 'mem_branch_taken'
+                                                                             : ... note: In instance 'cpu_axi_top'
+   93 | wire mem_branch_taken;
+      |      ^~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:94:13: Signal is not used: 'mem_branch_target'
+                                                                              : ... note: In instance 'cpu_axi_top'
+   94 | wire [31:0] mem_branch_target;
+      |             ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:95:13: Signal is not used: 'mem_jal_target'
+                                                                              : ... note: In instance 'cpu_axi_top'
+   95 | wire [31:0] mem_jal_target;
+      |             ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:96:13: Signal is not used: 'mem_jalr_target'
+                                                                              : ... note: In instance 'cpu_axi_top'
+   96 | wire [31:0] mem_jalr_target;
+      |             ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:157:6: Signal is not used: 'gpio_sel'
+                                                                              : ... note: In instance 'cpu_axi_top'
+  157 | wire gpio_sel;
+      |      ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:192:6: Signal is not used: 'mem_wait'
+                                                                              : ... note: In instance 'cpu_axi_top'
+  192 | wire mem_wait;
+      |      ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/cpu_axi_top.v:218:6: Signal is not used: 'timer_irq'
+                                                                              : ... note: In instance 'cpu_axi_top'
+  218 | wire timer_irq;
+      |      ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_uart_slave.v:8:20: Bits of signal are not used: 'AWADDR'[31:4]
+                                                                                : ... note: In instance 'cpu_axi_top.uart'
+    8 |     input [32-1:0] AWADDR,
+      |                    ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_uart_slave.v:23:20: Bits of signal are not used: 'ARADDR'[31:4]
+                                                                                 : ... note: In instance 'cpu_axi_top.uart'
+   23 |     input [32-1:0] ARADDR,
+      |                    ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_uart_slave.v:43:6: Signal is not used: 'tx'
+                                                                                : ... note: In instance 'cpu_axi_top.uart'
+   43 | wire tx;
+      |      ^~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/imem.v:5:18: Bits of signal are not used: 'address'[31:10,1:0]
+                                                                      : ... note: In instance 'cpu_axi_top.IMEM'
+    5 |     input [31:0] address,
+      |                  ^~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_dmem_slave.v:10:20: Bits of signal are not used: 'AWADDR'[31:10,1:0]
+                                                                                 : ... note: In instance 'cpu_axi_top.slave'
+   10 |     input [32-1:0] AWADDR,
+      |                    ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_dmem_slave.v:44:12: Bits of signal are not used: 'pending_read_addr'[31:10,1:0]
+                                                                                 : ... note: In instance 'cpu_axi_top.slave'
+   44 | reg [31:0] pending_read_addr;
+      |            ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_lite_master_cpu.v:30:17: Signal is not used: 'BRESP'
+                                                                                      : ... note: In instance 'cpu_axi_top.master'
+   30 |     input [1:0] BRESP,
+      |                 ^~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_lite_master_cpu.v:41:17: Signal is not used: 'RRESP'
+                                                                                      : ... note: In instance 'cpu_axi_top.master'
+   41 |     input [1:0] RRESP,
+      |                 ^~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_timer_slave.v:7:20: Bits of signal are not used: 'AWADDR'[31:4]
+                                                                                 : ... note: In instance 'cpu_axi_top.timer'
+    7 |     input [32-1:0] AWADDR,
+      |                    ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_timer_slave.v:19:20: Bits of signal are not used: 'ARADDR'[31:4]
+                                                                                  : ... note: In instance 'cpu_axi_top.timer'
+   19 |     input [32-1:0] ARADDR,
+      |                    ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/next_pc_mux.v:5:17: Bits of signal are not used: 'jalr_target'[0]
+                                                                             : ... note: In instance 'cpu_axi_top.NEXT_PC_MUX'
+    5 |     input[31:0] jalr_target,
+      |                 ^~~~~~~~~~~
+%Warning-UNUSEDPARAM: /openlane/designs/astracore_soc/src/accelerator_fsm.v:10:15: Parameter is not used: 'MATRIX_DIM'
+                                                                                 : ... note: In instance 'cpu_axi_top.accel.u_fsm'
+   10 |     parameter MATRIX_DIM = 4
+      |               ^~~~~~~~~~
+%Warning-UNUSEDPARAM: /openlane/designs/astracore_soc/src/address_generator.v:16:15: Parameter is not used: 'DATA_WIDTH'
+                                                                                   : ... note: In instance 'cpu_axi_top.accel.u_addr_gen'
+   16 |     parameter DATA_WIDTH = 8
+      |               ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/accel_regbank.v:16:21: Bits of signal are not used: 'reg_wr_data'[31:1]
+                                                                                : ... note: In instance 'cpu_axi_top.accel.u_regbank'
+   16 |     input  [31:0]   reg_wr_data,
+      |                     ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_accel_slave.v:15:21: Bits of signal are not used: 'AWADDR'[31:8]
+                                                                                  : ... note: In instance 'cpu_axi_top.accel.u_axi_slave'
+   15 |     input  [31:0]   AWADDR,
+      |                     ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/axi_accel_slave.v:27:21: Bits of signal are not used: 'ARADDR'[31:8]
+                                                                                  : ... note: In instance 'cpu_axi_top.accel.u_axi_slave'
+   27 |     input  [31:0]   ARADDR,
+      |                     ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/astracore_soc/src/wallace_multiplier.v:88:40: Bits of signal are not used: 'cla_result'[23:16]
+                                                                                     : ... note: In instance 'cpu_axi_top.accel.u_mac_array.row[3].col[3].pe.mac.multiplier'
+   88 |     wire [CLA_WIDTH-1:0] cla_a, cla_b, cla_result;
+      |                                        ^~~~~~~~~~
+%Warning-UNSIGNED: /openlane/designs/astracore_soc/src/axi_decoder.v:12:25: Comparison is constant due to unsigned arithmetic
+                                                                          : ... note: In instance 'cpu_axi_top.decoder'
+   12 | assign dmem_sel = (addr >= 32'h00000000)&&(addr <= 32'h00000FFF);
+      |                         ^~
+%Warning-CASEINCOMPLETE: /openlane/designs/astracore_soc/src/accelerator_fsm.v:112:9: Case values incompletely covered (example pattern 0x5)
+  112 |         case(state)
+      |         ^~~~
+%Warning-SYNCASYNCNET: /openlane/designs/astracore_soc/src/cpu_axi_top.v:3:11: Signal flopped as both synchronous and async: 'reset'
+                       /openlane/designs/astracore_soc/src/pc.v:11:9: ... Location of async usage
+   11 |      if(reset)
+      |         ^~~~~
+                       /openlane/designs/astracore_soc/src/cpu_axi_top.v:570:8: ... Location of sync usage
+  570 |     if(reset)
+      |        ^~~~~

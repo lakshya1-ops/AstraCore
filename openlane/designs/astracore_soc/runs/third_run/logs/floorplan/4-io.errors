@@ -1,0 +1,2 @@
+[ERROR PPL-0024] Number of IO pins (162) exceeds maximum number of available positions (130). Increase the die perimeter from 427.30um to 550.80um.
+Error: ioplacer.tcl, 51 PPL-0024

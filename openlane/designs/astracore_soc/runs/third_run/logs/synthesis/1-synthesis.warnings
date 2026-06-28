@@ -1,0 +1,5 @@
+Warning: Encountered `translate_off' comment! Such legacy hot comments are supported by Yosys, but are not part of any formal language specification. Using a portable and standards-compliant construct such as `ifdef is recommended!
+Warning: Replacing memory \memory with list of registers. See /openlane/designs/astracore_soc/src/axi_dmem_slave.v:63
+Warning: Replacing memory \registers with list of registers. See /openlane/designs/astracore_soc/src/regfile_id.v:21
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+Warnings: 3 unique messages, 3 total

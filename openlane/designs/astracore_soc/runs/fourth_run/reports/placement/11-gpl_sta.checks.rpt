@@ -1,0 +1,369 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= Typical Corner ===================================
+
+Startpoint: reset (input port clocked by clk)
+Endpoint: _446_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          2.00    2.00 v input external delay
+     6    0.05    0.12    0.09    2.09 v reset (in)
+                                         reset (net)
+                  0.12    0.00    2.09 v _396_/A (sky130_fd_sc_hd__buf_1)
+     6    0.03    0.17    0.24    2.34 v _396_/X (sky130_fd_sc_hd__buf_1)
+                                         _214_ (net)
+                  0.17    0.00    2.34 v _397_/A (sky130_fd_sc_hd__buf_1)
+     6    0.03    0.18    0.27    2.60 v _397_/X (sky130_fd_sc_hd__buf_1)
+                                         _215_ (net)
+                  0.18    0.00    2.60 v _402_/A (sky130_fd_sc_hd__inv_2)
+     1    0.00    0.05    0.09    2.69 ^ _402_/Y (sky130_fd_sc_hd__inv_2)
+                                         _004_ (net)
+                  0.05    0.00    2.69 ^ _446_/RESET_B (sky130_fd_sc_hd__dfrtp_2)
+                                  2.69   data arrival time
+
+                  0.15   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                                  9.75 ^ _446_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25   10.00   library recovery time
+                                 10.00   data required time
+-----------------------------------------------------------------------------
+                                 10.00   data required time
+                                 -2.69   data arrival time
+-----------------------------------------------------------------------------
+                                  7.31   slack (MET)
+
+
+Startpoint: _451_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: debug_pc[11] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.15    0.00    0.00 ^ _451_/CLK (sky130_fd_sc_hd__dfrtp_2)
+     7    0.09    0.44    0.70    0.70 ^ _451_/Q (sky130_fd_sc_hd__dfrtp_2)
+                                         debug_pc[11] (net)
+                  0.45    0.02    0.73 ^ debug_pc[11] (out)
+                                  0.73   data arrival time
+
+                  0.15   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                         -2.00    7.75   output external delay
+                                  7.75   data required time
+-----------------------------------------------------------------------------
+                                  7.75   data required time
+                                 -0.73   data arrival time
+-----------------------------------------------------------------------------
+                                  7.02   slack (MET)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= Typical Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= Typical Corner ===================================
+
+
+max slew violations count Typical: 0
+max fanout violations count Typical: 0
+max cap violations count Typical: 0
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 131 unannotated drivers.
+ clk
+ _481_/LO
+ _482_/LO
+ _483_/LO
+ _484_/HI
+ _485_/HI
+ _486_/HI
+ _487_/HI
+ _488_/HI
+ _489_/HI
+ _490_/HI
+ _491_/HI
+ _492_/HI
+ _493_/HI
+ _494_/HI
+ _495_/HI
+ _496_/HI
+ _497_/HI
+ _498_/HI
+ _499_/HI
+ _500_/HI
+ _501_/HI
+ _502_/HI
+ _503_/HI
+ _504_/HI
+ _505_/HI
+ _506_/HI
+ _507_/HI
+ _508_/HI
+ _509_/HI
+ _510_/HI
+ _511_/HI
+ _512_/HI
+ _513_/HI
+ _514_/HI
+ _515_/HI
+ _516_/HI
+ _517_/HI
+ _518_/HI
+ _519_/HI
+ _520_/HI
+ _521_/HI
+ _522_/HI
+ _523_/HI
+ _524_/HI
+ _525_/HI
+ _526_/HI
+ _527_/HI
+ _528_/HI
+ _529_/HI
+ _530_/HI
+ _531_/HI
+ _532_/HI
+ _533_/HI
+ _534_/HI
+ _535_/HI
+ _536_/HI
+ _537_/HI
+ _538_/HI
+ _539_/HI
+ _540_/HI
+ _541_/HI
+ _542_/HI
+ _543_/HI
+ _544_/HI
+ _545_/HI
+ _546_/HI
+ _547_/HI
+ _548_/HI
+ _549_/HI
+ _550_/HI
+ _551_/HI
+ _552_/HI
+ _553_/HI
+ _554_/HI
+ _555_/HI
+ _556_/HI
+ _557_/HI
+ _558_/HI
+ _559_/HI
+ _560_/HI
+ _561_/HI
+ _562_/HI
+ _563_/HI
+ _564_/HI
+ _565_/HI
+ _566_/HI
+ _567_/HI
+ _568_/HI
+ _569_/HI
+ _570_/HI
+ _571_/HI
+ _572_/HI
+ _573_/HI
+ _574_/HI
+ _575_/HI
+ _576_/HI
+ _577_/HI
+ _578_/HI
+ _579_/HI
+ _580_/HI
+ _581_/HI
+ _582_/HI
+ _583_/HI
+ _584_/HI
+ _585_/HI
+ _586_/HI
+ _587_/HI
+ _588_/HI
+ _589_/HI
+ _590_/HI
+ _591_/HI
+ _592_/HI
+ _593_/HI
+ _594_/HI
+ _595_/HI
+ _596_/HI
+ _597_/HI
+ _598_/HI
+ _599_/HI
+ _600_/HI
+ _601_/HI
+ _602_/HI
+ _603_/HI
+ _604_/HI
+ _605_/HI
+ _606_/HI
+ _607_/HI
+ _608_/HI
+ _609_/HI
+ _610_/HI
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 130 unconstrained endpoints.
+  debug_alu_result[0]
+  debug_alu_result[10]
+  debug_alu_result[11]
+  debug_alu_result[12]
+  debug_alu_result[13]
+  debug_alu_result[14]
+  debug_alu_result[15]
+  debug_alu_result[16]
+  debug_alu_result[17]
+  debug_alu_result[18]
+  debug_alu_result[19]
+  debug_alu_result[1]
+  debug_alu_result[20]
+  debug_alu_result[21]
+  debug_alu_result[22]
+  debug_alu_result[23]
+  debug_alu_result[24]
+  debug_alu_result[25]
+  debug_alu_result[26]
+  debug_alu_result[27]
+  debug_alu_result[28]
+  debug_alu_result[29]
+  debug_alu_result[2]
+  debug_alu_result[30]
+  debug_alu_result[31]
+  debug_alu_result[3]
+  debug_alu_result[4]
+  debug_alu_result[5]
+  debug_alu_result[6]
+  debug_alu_result[7]
+  debug_alu_result[8]
+  debug_alu_result[9]
+  debug_instr[0]
+  debug_instr[10]
+  debug_instr[11]
+  debug_instr[12]
+  debug_instr[13]
+  debug_instr[14]
+  debug_instr[15]
+  debug_instr[16]
+  debug_instr[17]
+  debug_instr[18]
+  debug_instr[19]
+  debug_instr[1]
+  debug_instr[20]
+  debug_instr[21]
+  debug_instr[22]
+  debug_instr[23]
+  debug_instr[24]
+  debug_instr[25]
+  debug_instr[26]
+  debug_instr[27]
+  debug_instr[28]
+  debug_instr[29]
+  debug_instr[2]
+  debug_instr[30]
+  debug_instr[31]
+  debug_instr[3]
+  debug_instr[4]
+  debug_instr[5]
+  debug_instr[6]
+  debug_instr[7]
+  debug_instr[8]
+  debug_instr[9]
+  debug_mem[0]
+  debug_mem[10]
+  debug_mem[11]
+  debug_mem[12]
+  debug_mem[13]
+  debug_mem[14]
+  debug_mem[15]
+  debug_mem[16]
+  debug_mem[17]
+  debug_mem[18]
+  debug_mem[19]
+  debug_mem[1]
+  debug_mem[20]
+  debug_mem[21]
+  debug_mem[22]
+  debug_mem[23]
+  debug_mem[24]
+  debug_mem[25]
+  debug_mem[26]
+  debug_mem[27]
+  debug_mem[28]
+  debug_mem[29]
+  debug_mem[2]
+  debug_mem[30]
+  debug_mem[31]
+  debug_mem[3]
+  debug_mem[4]
+  debug_mem[5]
+  debug_mem[6]
+  debug_mem[7]
+  debug_mem[8]
+  debug_mem[9]
+  debug_pc[0]
+  debug_pc[1]
+  debug_wb[0]
+  debug_wb[10]
+  debug_wb[11]
+  debug_wb[12]
+  debug_wb[13]
+  debug_wb[14]
+  debug_wb[15]
+  debug_wb[16]
+  debug_wb[17]
+  debug_wb[18]
+  debug_wb[19]
+  debug_wb[1]
+  debug_wb[20]
+  debug_wb[21]
+  debug_wb[22]
+  debug_wb[23]
+  debug_wb[24]
+  debug_wb[25]
+  debug_wb[26]
+  debug_wb[27]
+  debug_wb[28]
+  debug_wb[29]
+  debug_wb[2]
+  debug_wb[30]
+  debug_wb[31]
+  debug_wb[3]
+  debug_wb[4]
+  debug_wb[5]
+  debug_wb[6]
+  debug_wb[7]
+  debug_wb[8]
+  debug_wb[9]

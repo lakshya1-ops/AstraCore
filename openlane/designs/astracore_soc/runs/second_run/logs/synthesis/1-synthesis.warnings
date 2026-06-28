@@ -1,0 +1,103 @@
+Warning: Encountered `translate_off' comment! Such legacy hot comments are supported by Yosys, but are not part of any formal language specification. Using a portable and standards-compliant construct such as `ifdef is recommended!
+Warning: Replacing memory \memory with list of registers. See /openlane/designs/astracore_soc/src/axi_dmem_slave.v:63
+Warning: Replacing memory \registers with list of registers. See /openlane/designs/astracore_soc/src/regfile_id.v:21
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [31]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [30]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [29]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [28]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [27]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [26]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [25]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [24]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [23]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [22]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [21]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [20]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [19]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [18]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [17]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [16]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [15]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [14]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [13]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [12]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [11]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [10]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [9]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [8]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [7]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [6]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [5]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [4]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [3]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [2]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [1]:
+Warning: multiple conflicting drivers for $paramod$a965771240e86f019585f6ede40280813c1fc46f\matrix_buffer.\idx [0]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [31]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [30]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [29]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [28]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [27]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [26]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [25]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [24]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [23]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [22]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [21]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [20]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [19]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [18]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [17]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [16]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [15]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [14]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [13]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [12]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [11]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [10]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [9]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [8]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [7]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [6]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [5]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [4]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [3]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [2]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [1]:
+Warning: multiple conflicting drivers for axi_timer_slave.\count_reg [0]:
+Warning: multiple conflicting drivers for axi_timer_slave.\status_match:
+Warning: Driver-driver conflict for \timer.status_match between cell $auto$ff.cc:266:slice$39666.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [31] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [30] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [29] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [28] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [27] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [26] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [25] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [24] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [23] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [22] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [21] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [20] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [19] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [18] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [17] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [16] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [15] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [14] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [13] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [12] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [11] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [10] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [9] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [8] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [7] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [6] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [5] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [4] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [3] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [2] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [1] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+Warning: Driver-driver conflict for \timer.count_reg [0] between cell $auto$ff.cc:266:slice$39669.Q and constant 1'0 in cpu_axi_top: Resolved using constant.
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+Warnings: 101 unique messages, 101 total

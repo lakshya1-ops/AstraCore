@@ -1,0 +1,760 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= Typical Corner ===================================
+
+Startpoint: reset (input port clocked by clk)
+Endpoint: _442_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          2.00    2.00 v input external delay
+     6    0.01    0.03    0.02    2.02 v reset (in)
+                                         reset (net)
+                  0.03    0.00    2.02 v _396_/A (sky130_fd_sc_hd__buf_1)
+     6    0.02    0.14    0.18    2.20 v _396_/X (sky130_fd_sc_hd__buf_1)
+                                         _214_ (net)
+                  0.14    0.00    2.20 v _397_/A (sky130_fd_sc_hd__buf_1)
+     6    0.03    0.15    0.24    2.44 v _397_/X (sky130_fd_sc_hd__buf_1)
+                                         _215_ (net)
+                  0.15    0.00    2.44 v _398_/A (sky130_fd_sc_hd__inv_2)
+     1    0.00    0.05    0.08    2.52 ^ _398_/Y (sky130_fd_sc_hd__inv_2)
+                                         _000_ (net)
+                  0.05    0.00    2.52 ^ _442_/RESET_B (sky130_fd_sc_hd__dfrtp_2)
+                                  2.52   data arrival time
+
+                  0.15   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                                  9.75 ^ _442_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25   10.00   library recovery time
+                                 10.00   data required time
+-----------------------------------------------------------------------------
+                                 10.00   data required time
+                                 -2.52   data arrival time
+-----------------------------------------------------------------------------
+                                  7.48   slack (MET)
+
+
+Startpoint: _451_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: debug_pc[11] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.15    0.00    0.00 ^ _451_/CLK (sky130_fd_sc_hd__dfrtp_2)
+     7    0.06    0.27    0.58    0.58 ^ _451_/Q (sky130_fd_sc_hd__dfrtp_2)
+                                         debug_pc[11] (net)
+                  0.27    0.00    0.58 ^ debug_pc[11] (out)
+                                  0.58   data arrival time
+
+                  0.15   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                         -2.00    7.75   output external delay
+                                  7.75   data required time
+-----------------------------------------------------------------------------
+                                  7.75   data required time
+                                 -0.58   data arrival time
+-----------------------------------------------------------------------------
+                                  7.17   slack (MET)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= Typical Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= Typical Corner ===================================
+
+
+max slew violations count Typical: 0
+max fanout violations count Typical: 0
+max cap violations count Typical: 0
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 522 unannotated drivers.
+ clk
+ reset
+ _221_/X
+ _222_/X
+ _223_/X
+ _224_/X
+ _225_/Y
+ _226_/Y
+ _227_/Y
+ _228_/Y
+ _229_/Y
+ _230_/X
+ _231_/Y
+ _232_/X
+ _233_/X
+ _234_/X
+ _235_/X
+ _236_/X
+ _237_/Y
+ _238_/Y
+ _239_/Y
+ _240_/Y
+ _241_/X
+ _242_/X
+ _243_/X
+ _244_/X
+ _245_/X
+ _246_/Y
+ _247_/X
+ _248_/Y
+ _249_/X
+ _250_/X
+ _251_/X
+ _252_/X
+ _253_/Y
+ _254_/Y
+ _255_/Y
+ _256_/X
+ _257_/Y
+ _258_/Y
+ _259_/Y
+ _260_/X
+ _261_/Y
+ _262_/Y
+ _263_/Y
+ _264_/Y
+ _265_/Y
+ _266_/Y
+ _267_/X
+ _268_/Y
+ _269_/Y
+ _270_/Y
+ _271_/X
+ _272_/Y
+ _273_/Y
+ _274_/Y
+ _275_/Y
+ _276_/X
+ _277_/X
+ _278_/X
+ _279_/Y
+ _280_/X
+ _281_/Y
+ _282_/Y
+ _283_/Y
+ _284_/X
+ _285_/Y
+ _286_/X
+ _287_/Y
+ _288_/X
+ _289_/Y
+ _290_/Y
+ _291_/Y
+ _292_/Y
+ _293_/Y
+ _294_/Y
+ _295_/Y
+ _296_/Y
+ _297_/X
+ _298_/X
+ _299_/X
+ _300_/Y
+ _301_/Y
+ _302_/Y
+ _303_/Y
+ _304_/Y
+ _305_/X
+ _306_/X
+ _307_/X
+ _308_/Y
+ _309_/Y
+ _310_/X
+ _311_/Y
+ _312_/X
+ _313_/Y
+ _314_/Y
+ _315_/Y
+ _316_/X
+ _317_/Y
+ _318_/X
+ _319_/Y
+ _320_/Y
+ _321_/Y
+ _322_/X
+ _323_/X
+ _324_/Y
+ _325_/Y
+ _326_/Y
+ _327_/X
+ _328_/Y
+ _329_/X
+ _330_/Y
+ _331_/Y
+ _332_/Y
+ _333_/Y
+ _334_/X
+ _335_/Y
+ _336_/Y
+ _337_/Y
+ _338_/Y
+ _339_/Y
+ _340_/Y
+ _341_/X
+ _342_/Y
+ _343_/Y
+ _344_/Y
+ _345_/Y
+ _346_/Y
+ _347_/Y
+ _348_/Y
+ _349_/X
+ _350_/X
+ _351_/Y
+ _352_/Y
+ _353_/X
+ _354_/Y
+ _355_/Y
+ _356_/Y
+ _357_/Y
+ _358_/X
+ _359_/Y
+ _360_/Y
+ _361_/X
+ _362_/Y
+ _363_/Y
+ _364_/Y
+ _365_/Y
+ _366_/Y
+ _367_/X
+ _368_/X
+ _369_/X
+ _370_/X
+ _371_/X
+ _372_/X
+ _373_/X
+ _374_/Y
+ _375_/X
+ _376_/X
+ _377_/Y
+ _378_/Y
+ _379_/X
+ _380_/Y
+ _381_/Y
+ _382_/Y
+ _383_/Y
+ _384_/X
+ _385_/Y
+ _386_/Y
+ _387_/X
+ _388_/X
+ _389_/X
+ _390_/Y
+ _391_/Y
+ _392_/Y
+ _393_/X
+ _394_/X
+ _395_/X
+ _396_/X
+ _397_/X
+ _398_/Y
+ _399_/Y
+ _400_/Y
+ _401_/Y
+ _402_/Y
+ _403_/Y
+ _404_/X
+ _405_/Y
+ _406_/Y
+ _407_/Y
+ _408_/Y
+ _409_/Y
+ _410_/Y
+ _411_/X
+ _412_/Y
+ _413_/Y
+ _414_/Y
+ _415_/Y
+ _416_/Y
+ _417_/Y
+ _418_/X
+ _419_/Y
+ _420_/Y
+ _421_/Y
+ _422_/Y
+ _423_/Y
+ _424_/Y
+ _425_/X
+ _426_/Y
+ _427_/Y
+ _428_/Y
+ _429_/Y
+ _430_/Y
+ _431_/Y
+ _432_/X
+ _433_/Y
+ _434_/Y
+ _435_/Y
+ _436_/Y
+ _437_/Y
+ _438_/Y
+ _439_/Y
+ _440_/Y
+ _441_/Y
+ _442_/Q
+ _443_/Q
+ _444_/Q
+ _445_/Q
+ _446_/Q
+ _447_/Q
+ _448_/Q
+ _449_/Q
+ _450_/Q
+ _451_/Q
+ _452_/Q
+ _453_/Q
+ _454_/Q
+ _455_/Q
+ _456_/Q
+ _457_/Q
+ _458_/Q
+ _459_/Q
+ _460_/Q
+ _461_/Q
+ _462_/Q
+ _463_/Q
+ _464_/Q
+ _465_/Q
+ _466_/Q
+ _467_/Q
+ _468_/Q
+ _469_/Q
+ _470_/Q
+ _471_/Q
+ _472_/Q
+ _473_/Q
+ _474_/Q
+ _475_/Q
+ _476_/Q
+ _477_/Q
+ _478_/Q
+ _479_/Q
+ _480_/Q
+ _481_/HI
+ _481_/LO
+ _482_/HI
+ _482_/LO
+ _483_/HI
+ _483_/LO
+ _484_/HI
+ _484_/LO
+ _485_/HI
+ _485_/LO
+ _486_/HI
+ _486_/LO
+ _487_/HI
+ _487_/LO
+ _488_/HI
+ _488_/LO
+ _489_/HI
+ _489_/LO
+ _490_/HI
+ _490_/LO
+ _491_/HI
+ _491_/LO
+ _492_/HI
+ _492_/LO
+ _493_/HI
+ _493_/LO
+ _494_/HI
+ _494_/LO
+ _495_/HI
+ _495_/LO
+ _496_/HI
+ _496_/LO
+ _497_/HI
+ _497_/LO
+ _498_/HI
+ _498_/LO
+ _499_/HI
+ _499_/LO
+ _500_/HI
+ _500_/LO
+ _501_/HI
+ _501_/LO
+ _502_/HI
+ _502_/LO
+ _503_/HI
+ _503_/LO
+ _504_/HI
+ _504_/LO
+ _505_/HI
+ _505_/LO
+ _506_/HI
+ _506_/LO
+ _507_/HI
+ _507_/LO
+ _508_/HI
+ _508_/LO
+ _509_/HI
+ _509_/LO
+ _510_/HI
+ _510_/LO
+ _511_/HI
+ _511_/LO
+ _512_/HI
+ _512_/LO
+ _513_/HI
+ _513_/LO
+ _514_/HI
+ _514_/LO
+ _515_/HI
+ _515_/LO
+ _516_/HI
+ _516_/LO
+ _517_/HI
+ _517_/LO
+ _518_/HI
+ _518_/LO
+ _519_/HI
+ _519_/LO
+ _520_/HI
+ _520_/LO
+ _521_/HI
+ _521_/LO
+ _522_/HI
+ _522_/LO
+ _523_/HI
+ _523_/LO
+ _524_/HI
+ _524_/LO
+ _525_/HI
+ _525_/LO
+ _526_/HI
+ _526_/LO
+ _527_/HI
+ _527_/LO
+ _528_/HI
+ _528_/LO
+ _529_/HI
+ _529_/LO
+ _530_/HI
+ _530_/LO
+ _531_/HI
+ _531_/LO
+ _532_/HI
+ _532_/LO
+ _533_/HI
+ _533_/LO
+ _534_/HI
+ _534_/LO
+ _535_/HI
+ _535_/LO
+ _536_/HI
+ _536_/LO
+ _537_/HI
+ _537_/LO
+ _538_/HI
+ _538_/LO
+ _539_/HI
+ _539_/LO
+ _540_/HI
+ _540_/LO
+ _541_/HI
+ _541_/LO
+ _542_/HI
+ _542_/LO
+ _543_/HI
+ _543_/LO
+ _544_/HI
+ _544_/LO
+ _545_/HI
+ _545_/LO
+ _546_/HI
+ _546_/LO
+ _547_/HI
+ _547_/LO
+ _548_/HI
+ _548_/LO
+ _549_/HI
+ _549_/LO
+ _550_/HI
+ _550_/LO
+ _551_/HI
+ _551_/LO
+ _552_/HI
+ _552_/LO
+ _553_/HI
+ _553_/LO
+ _554_/HI
+ _554_/LO
+ _555_/HI
+ _555_/LO
+ _556_/HI
+ _556_/LO
+ _557_/HI
+ _557_/LO
+ _558_/HI
+ _558_/LO
+ _559_/HI
+ _559_/LO
+ _560_/HI
+ _560_/LO
+ _561_/HI
+ _561_/LO
+ _562_/HI
+ _562_/LO
+ _563_/HI
+ _563_/LO
+ _564_/HI
+ _564_/LO
+ _565_/HI
+ _565_/LO
+ _566_/HI
+ _566_/LO
+ _567_/HI
+ _567_/LO
+ _568_/HI
+ _568_/LO
+ _569_/HI
+ _569_/LO
+ _570_/HI
+ _570_/LO
+ _571_/HI
+ _571_/LO
+ _572_/HI
+ _572_/LO
+ _573_/HI
+ _573_/LO
+ _574_/HI
+ _574_/LO
+ _575_/HI
+ _575_/LO
+ _576_/HI
+ _576_/LO
+ _577_/HI
+ _577_/LO
+ _578_/HI
+ _578_/LO
+ _579_/HI
+ _579_/LO
+ _580_/HI
+ _580_/LO
+ _581_/HI
+ _581_/LO
+ _582_/HI
+ _582_/LO
+ _583_/HI
+ _583_/LO
+ _584_/HI
+ _584_/LO
+ _585_/HI
+ _585_/LO
+ _586_/HI
+ _586_/LO
+ _587_/HI
+ _587_/LO
+ _588_/HI
+ _588_/LO
+ _589_/HI
+ _589_/LO
+ _590_/HI
+ _590_/LO
+ _591_/HI
+ _591_/LO
+ _592_/HI
+ _592_/LO
+ _593_/HI
+ _593_/LO
+ _594_/HI
+ _594_/LO
+ _595_/HI
+ _595_/LO
+ _596_/HI
+ _596_/LO
+ _597_/HI
+ _597_/LO
+ _598_/HI
+ _598_/LO
+ _599_/HI
+ _599_/LO
+ _600_/HI
+ _600_/LO
+ _601_/HI
+ _601_/LO
+ _602_/HI
+ _602_/LO
+ _603_/HI
+ _603_/LO
+ _604_/HI
+ _604_/LO
+ _605_/HI
+ _605_/LO
+ _606_/HI
+ _606_/LO
+ _607_/HI
+ _607_/LO
+ _608_/HI
+ _608_/LO
+ _609_/HI
+ _609_/LO
+ _610_/HI
+ _610_/LO
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 130 unconstrained endpoints.
+  debug_alu_result[0]
+  debug_alu_result[10]
+  debug_alu_result[11]
+  debug_alu_result[12]
+  debug_alu_result[13]
+  debug_alu_result[14]
+  debug_alu_result[15]
+  debug_alu_result[16]
+  debug_alu_result[17]
+  debug_alu_result[18]
+  debug_alu_result[19]
+  debug_alu_result[1]
+  debug_alu_result[20]
+  debug_alu_result[21]
+  debug_alu_result[22]
+  debug_alu_result[23]
+  debug_alu_result[24]
+  debug_alu_result[25]
+  debug_alu_result[26]
+  debug_alu_result[27]
+  debug_alu_result[28]
+  debug_alu_result[29]
+  debug_alu_result[2]
+  debug_alu_result[30]
+  debug_alu_result[31]
+  debug_alu_result[3]
+  debug_alu_result[4]
+  debug_alu_result[5]
+  debug_alu_result[6]
+  debug_alu_result[7]
+  debug_alu_result[8]
+  debug_alu_result[9]
+  debug_instr[0]
+  debug_instr[10]
+  debug_instr[11]
+  debug_instr[12]
+  debug_instr[13]
+  debug_instr[14]
+  debug_instr[15]
+  debug_instr[16]
+  debug_instr[17]
+  debug_instr[18]
+  debug_instr[19]
+  debug_instr[1]
+  debug_instr[20]
+  debug_instr[21]
+  debug_instr[22]
+  debug_instr[23]
+  debug_instr[24]
+  debug_instr[25]
+  debug_instr[26]
+  debug_instr[27]
+  debug_instr[28]
+  debug_instr[29]
+  debug_instr[2]
+  debug_instr[30]
+  debug_instr[31]
+  debug_instr[3]
+  debug_instr[4]
+  debug_instr[5]
+  debug_instr[6]
+  debug_instr[7]
+  debug_instr[8]
+  debug_instr[9]
+  debug_mem[0]
+  debug_mem[10]
+  debug_mem[11]
+  debug_mem[12]
+  debug_mem[13]
+  debug_mem[14]
+  debug_mem[15]
+  debug_mem[16]
+  debug_mem[17]
+  debug_mem[18]
+  debug_mem[19]
+  debug_mem[1]
+  debug_mem[20]
+  debug_mem[21]
+  debug_mem[22]
+  debug_mem[23]
+  debug_mem[24]
+  debug_mem[25]
+  debug_mem[26]
+  debug_mem[27]
+  debug_mem[28]
+  debug_mem[29]
+  debug_mem[2]
+  debug_mem[30]
+  debug_mem[31]
+  debug_mem[3]
+  debug_mem[4]
+  debug_mem[5]
+  debug_mem[6]
+  debug_mem[7]
+  debug_mem[8]
+  debug_mem[9]
+  debug_pc[0]
+  debug_pc[1]
+  debug_wb[0]
+  debug_wb[10]
+  debug_wb[11]
+  debug_wb[12]
+  debug_wb[13]
+  debug_wb[14]
+  debug_wb[15]
+  debug_wb[16]
+  debug_wb[17]
+  debug_wb[18]
+  debug_wb[19]
+  debug_wb[1]
+  debug_wb[20]
+  debug_wb[21]
+  debug_wb[22]
+  debug_wb[23]
+  debug_wb[24]
+  debug_wb[25]
+  debug_wb[26]
+  debug_wb[27]
+  debug_wb[28]
+  debug_wb[29]
+  debug_wb[2]
+  debug_wb[30]
+  debug_wb[31]
+  debug_wb[3]
+  debug_wb[4]
+  debug_wb[5]
+  debug_wb[6]
+  debug_wb[7]
+  debug_wb[8]
+  debug_wb[9]

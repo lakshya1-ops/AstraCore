@@ -1,0 +1,317 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.38 (git sha1 543faed9c8c, clang++ 17.0.6 -fPIC -Os)
+
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Liberty frontend: /pdks/volare/sky130/versions/bdc9412b3e468c102d01b7cf6337be06ec6e9c9a/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/if_id.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/if_id.v' to AST representation.
+Storing AST representation for module `$abstract\if_id'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/axi_uart_slave.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/axi_uart_slave.v' to AST representation.
+Storing AST representation for module `$abstract\axi_uart_slave'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/comparator.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/comparator.v' to AST representation.
+Storing AST representation for module `$abstract\comparator'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/hazard_detection.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/hazard_detection.v' to AST representation.
+Storing AST representation for module `$abstract\hazard_detection_unit'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/dmem.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/dmem.v' to AST representation.
+Storing AST representation for module `$abstract\dmem'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/mem_wb.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/mem_wb.v' to AST representation.
+Storing AST representation for module `$abstract\mem_wb'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/ex_mem.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/ex_mem.v' to AST representation.
+Storing AST representation for module `$abstract\ex_mem'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/processing_element.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/processing_element.v' to AST representation.
+Storing AST representation for module `$abstract\processing_element'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/accelerator_fsm.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/accelerator_fsm.v' to AST representation.
+Storing AST representation for module `$abstract\accelerator_fsm'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/imem.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/imem.v' to AST representation.
+Storing AST representation for module `$abstract\imem'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/address_generator.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/address_generator.v' to AST representation.
+Storing AST representation for module `$abstract\address_generator'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/alu.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/alu.v' to AST representation.
+Storing AST representation for module `$abstract\alu'.
+Successfully finished Verilog frontend.
+
+14. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/accel_regbank.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/accel_regbank.v' to AST representation.
+Storing AST representation for module `$abstract\accel_regbank'.
+Successfully finished Verilog frontend.
+
+15. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/carry_save_adder.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/carry_save_adder.v' to AST representation.
+Storing AST representation for module `$abstract\half_adder'.
+Storing AST representation for module `$abstract\full_adder'.
+Storing AST representation for module `$abstract\carry_save_adder'.
+Successfully finished Verilog frontend.
+
+16. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/cpu_axi_top.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/cpu_axi_top.v' to AST representation.
+Storing AST representation for module `$abstract\cpu_axi_top'.
+Successfully finished Verilog frontend.
+
+17. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/pc_next.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/pc_next.v' to AST representation.
+Storing AST representation for module `$abstract\pc_next'.
+Successfully finished Verilog frontend.
+
+18. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/alu_sel_control.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/alu_sel_control.v' to AST representation.
+Storing AST representation for module `$abstract\alu_control'.
+Successfully finished Verilog frontend.
+
+19. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/axi_decoder.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/axi_decoder.v' to AST representation.
+Storing AST representation for module `$abstract\axi_decoder'.
+Successfully finished Verilog frontend.
+
+20. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/uart_tx.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/uart_tx.v' to AST representation.
+Storing AST representation for module `$abstract\uart_tx'.
+Successfully finished Verilog frontend.
+
+21. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/writeback_mux.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/writeback_mux.v' to AST representation.
+Storing AST representation for module `$abstract\writeback_mux'.
+Successfully finished Verilog frontend.
+
+22. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/id_ex.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/id_ex.v' to AST representation.
+Storing AST representation for module `$abstract\id_ex'.
+Successfully finished Verilog frontend.
+
+23. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/wallace_multiplier.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/wallace_multiplier.v' to AST representation.
+Warning: Encountered `translate_off' comment! Such legacy hot comments are supported by Yosys, but are not part of any formal language specification. Using a portable and standards-compliant construct such as `ifdef is recommended!
+Storing AST representation for module `$abstract\wallace_multiplier'.
+Successfully finished Verilog frontend.
+
+24. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/axi_accel_slave.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/axi_accel_slave.v' to AST representation.
+Storing AST representation for module `$abstract\axi_accel_slave'.
+Successfully finished Verilog frontend.
+
+25. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/axi_dmem_slave.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/axi_dmem_slave.v' to AST representation.
+Storing AST representation for module `$abstract\axi_dmem_slave'.
+Successfully finished Verilog frontend.
+
+26. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/forwarding_unit.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/forwarding_unit.v' to AST representation.
+Storing AST representation for module `$abstract\forwarding_unit'.
+Successfully finished Verilog frontend.
+
+27. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/mac_array.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/mac_array.v' to AST representation.
+Storing AST representation for module `$abstract\mac_array'.
+Successfully finished Verilog frontend.
+
+28. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/axi_lite_master_cpu.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/axi_lite_master_cpu.v' to AST representation.
+Storing AST representation for module `$abstract\axi_lite_master_cpu'.
+Successfully finished Verilog frontend.
+
+29. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/regfile_id.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/regfile_id.v' to AST representation.
+Storing AST representation for module `$abstract\regfile'.
+Successfully finished Verilog frontend.
+
+30. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/cla_adder.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/cla_adder.v' to AST representation.
+Storing AST representation for module `$abstract\cla_group'.
+Storing AST representation for module `$abstract\cla_adder'.
+Successfully finished Verilog frontend.
+
+31. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/pc.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/pc.v' to AST representation.
+Storing AST representation for module `$abstract\pc'.
+Successfully finished Verilog frontend.
+
+32. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/matrix_accelerator_top.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/matrix_accelerator_top.v' to AST representation.
+Storing AST representation for module `$abstract\matrix_accelerator_top'.
+Successfully finished Verilog frontend.
+
+33. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/alu_opB_src_mux.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/alu_opB_src_mux.v' to AST representation.
+Storing AST representation for module `$abstract\alu_src_mux'.
+Successfully finished Verilog frontend.
+
+34. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/main_control.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/main_control.v' to AST representation.
+Storing AST representation for module `$abstract\main_control'.
+Successfully finished Verilog frontend.
+
+35. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/decoder.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/decoder.v' to AST representation.
+Storing AST representation for module `$abstract\decoder'.
+Successfully finished Verilog frontend.
+
+36. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/matrix_buffer.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/matrix_buffer.v' to AST representation.
+Storing AST representation for module `$abstract\matrix_buffer'.
+Successfully finished Verilog frontend.
+
+37. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/axi_timer_slave.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/axi_timer_slave.v' to AST representation.
+Storing AST representation for module `$abstract\axi_timer_slave'.
+Successfully finished Verilog frontend.
+
+38. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/next_pc_mux.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/next_pc_mux.v' to AST representation.
+Storing AST representation for module `$abstract\next_pc_mux'.
+Successfully finished Verilog frontend.
+
+39. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/mac_unit.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/mac_unit.v' to AST representation.
+Storing AST representation for module `$abstract\mac_unit'.
+Successfully finished Verilog frontend.
+
+40. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/imm_gen.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/imm_gen.v' to AST representation.
+Storing AST representation for module `$abstract\imm_gen'.
+Successfully finished Verilog frontend.
+
+41. Executing Verilog-2005 frontend: /openlane/designs/astracore_soc/src/branch_target_adder.v
+Parsing SystemVerilog input from `/openlane/designs/astracore_soc/src/branch_target_adder.v' to AST representation.
+Storing AST representation for module `$abstract\branch_target_adder'.
+Successfully finished Verilog frontend.
+
+42. Executing HIERARCHY pass (managing design hierarchy).
+
+43. Executing AST frontend in derive mode using pre-parsed AST for module `\cpu_axi_top'.
+Generating RTLIL representation for module `\cpu_axi_top'.
+
+43.1. Analyzing design hierarchy..
+Top module:  \cpu_axi_top
+
+43.2. Executing AST frontend in derive mode using pre-parsed AST for module `\matrix_accelerator_top'.
+Generating RTLIL representation for module `\matrix_accelerator_top'.
+
+43.3. Executing AST frontend in derive mode using pre-parsed AST for module `\axi_timer_slave'.
+Generating RTLIL representation for module `\axi_timer_slave'.
+
+43.4. Executing AST frontend in derive mode using pre-parsed AST for module `\axi_uart_slave'.
+Generating RTLIL representation for module `\axi_uart_slave'.
+
+43.5. Executing AST frontend in derive mode using pre-parsed AST for module `\axi_decoder'.
+Generating RTLIL representation for module `\axi_decoder'.
+
+43.6. Executing AST frontend in derive mode using pre-parsed AST for module `\axi_dmem_slave'.
+Generating RTLIL representation for module `\axi_dmem_slave'.
+Warning: Replacing memory \memory with list of registers. See /openlane/designs/astracore_soc/src/axi_dmem_slave.v:63
+
+43.7. Executing AST frontend in derive mode using pre-parsed AST for module `\axi_lite_master_cpu'.
+Generating RTLIL representation for module `\axi_lite_master_cpu'.
+
+43.8. Executing AST frontend in derive mode using pre-parsed AST for module `\hazard_detection_unit'.
+Generating RTLIL representation for module `\hazard_detection_unit'.
+
+43.9. Executing AST frontend in derive mode using pre-parsed AST for module `\mem_wb'.
+Generating RTLIL representation for module `\mem_wb'.
+
+43.10. Executing AST frontend in derive mode using pre-parsed AST for module `\ex_mem'.
+Generating RTLIL representation for module `\ex_mem'.
+
+43.11. Executing AST frontend in derive mode using pre-parsed AST for module `\id_ex'.
+Generating RTLIL representation for module `\id_ex'.
+
+43.12. Executing AST frontend in derive mode using pre-parsed AST for module `\if_id'.
+Generating RTLIL representation for module `\if_id'.
+
+43.13. Executing AST frontend in derive mode using pre-parsed AST for module `\writeback_mux'.
+Generating RTLIL representation for module `\writeback_mux'.
+
+43.14. Executing AST frontend in derive mode using pre-parsed AST for module `\next_pc_mux'.
+Generating RTLIL representation for module `\next_pc_mux'.
+
+43.15. Executing AST frontend in derive mode using pre-parsed AST for module `\branch_target_adder'.
+Generating RTLIL representation for module `\branch_target_adder'.
+
+43.16. Executing AST frontend in derive mode using pre-parsed AST for module `\comparator'.
+Generating RTLIL representation for module `\comparator'.
+
+43.17. Executing AST frontend in derive mode using pre-parsed AST for module `\alu'.
+Generating RTLIL representation for module `\alu'.
+
+43.18. Executing AST frontend in derive mode using pre-parsed AST for module `\alu_src_mux'.
+Generating RTLIL representation for module `\alu_src_mux'.
+
+43.19. Executing AST frontend in derive mode using pre-parsed AST for module `\imm_gen'.
+Generating RTLIL representation for module `\imm_gen'.
+
+43.20. Executing AST frontend in derive mode using pre-parsed AST for module `\forwarding_unit'.
+Generating RTLIL representation for module `\forwarding_unit'.
+
+43.21. Executing AST frontend in derive mode using pre-parsed AST for module `\regfile'.
+Generating RTLIL representation for module `\regfile'.
+Warning: Replacing memory \registers with list of registers. See /openlane/designs/astracore_soc/src/regfile_id.v:21
+
+43.22. Executing AST frontend in derive mode using pre-parsed AST for module `\alu_control'.
+Generating RTLIL representation for module `\alu_control'.
+
+43.23. Executing AST frontend in derive mode using pre-parsed AST for module `\main_control'.
+Generating RTLIL representation for module `\main_control'.
+
+43.24. Executing AST frontend in derive mode using pre-parsed AST for module `\decoder'.
+Generating RTLIL representation for module `\decoder'.
+
+43.25. Executing AST frontend in derive mode using pre-parsed AST for module `\imem'.
+/openlane/designs/astracore_soc/src/imem.v:19: ERROR: Can not open file `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/program.mem` for \$readmemh.

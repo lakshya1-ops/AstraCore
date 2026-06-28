@@ -1,0 +1,19 @@
+Design Name: cpu_axi_top
+Run Directory: /openlane/designs/astracore_soc/runs/fourth_run
+----------------------------------------
+
+Magic DRC Summary:
+Source: /openlane/designs/astracore_soc/runs/fourth_run/reports/signoff/drc.rpt
+Total Magic DRC violations is 0
+----------------------------------------
+
+LVS Summary:
+Source: /openlane/designs/astracore_soc/runs/fourth_run/logs/signoff/41-cpu_axi_top.lef.lvs.log
+Number of nets: 582                        |Number of nets: 582                        
+Design is LVS clean.
+----------------------------------------
+
+Antenna Summary:
+Source: /openlane/designs/astracore_soc/runs/fourth_run/logs/signoff/44-arc.log
+Pin violations: 7
+Net violations: 5

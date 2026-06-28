@@ -1,0 +1,1 @@
+/openlane/designs/astracore_soc/src/imem.v:19: ERROR: Can not open file `/Users/lakshyachowdhury/Documents/ASTRACORE/CPU/program.mem` for \$readmemh.
